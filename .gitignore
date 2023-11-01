@@ -1,0 +1,17 @@
+!*.yaml
+!.gitignore
+!*.md
+!*.sh
+!*.js*
+notebooks/
+deps/
+custom_components/
+#!.ssh/
+#!id_rsa*
+secrets.yaml
+.ssh
+.storage
+.cloud
+.google.token
+home-assistant.log*
+id_rsa*
