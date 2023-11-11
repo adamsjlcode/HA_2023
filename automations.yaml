@@ -1,1 +1,178 @@
-[]
+- id: '1699583739347'
+  alias: 'Switch: Bedroom All Lights Off'
+  description: Long Press Off Button
+  trigger:
+  - device_id: 3f330cd2e69e8ee831d5c5f0ab4bc433
+    domain: hue
+    platform: device
+    type: long_press
+    subtype: 4
+    unique_id: 96d604ca-c2a4-4d4f-84f2-dbc6728ae2ae
+  - device_id: c0fe949098f7ff63239d22535cf3240a
+    domain: hue
+    platform: device
+    type: long_press
+    subtype: 4
+    unique_id: bce336b1-6bc2-4a46-bdd5-1c7bf7bbfd13
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      device_id:
+      - 3e85e140da7932a78fa8c0c855488192
+      - 0df99c2f064682cb887bdbc6004b11ff
+      - 4f72c3af81e2dbfec9b42c8daa27bff6
+      - 10bd54ec1321964b8f42513d95569fb1
+      - ae9a7a6ecc1a78fb729248e254f52b32
+      - e2863f42283465b7f5d3f51bdbf80ca2
+      - 8fa0f75f077510dafcc4ba0cc5e02444
+      - 73e277806daafc32a080362e8ac7d9be
+      - 18b4a0379454cd85b2f18a962ffe8c30
+      - 2fbfe2a1a69c726b59f2876e08c597f9
+      - 04b3402eedc91e13a89c8d108bc7fd56
+      - 4285466a8f1c5d3a42b2db310dff1f69
+      - 303d1584166e2c7c7de70d806228e855
+      - 1e2569baf7100aa8803bea93d7c70707
+      - 7999bfaccf222410c3b9719e6c90c400
+      - eae7a004eda9adfbfde9b48862d25977
+      - adb799ad4a9a04501f78b0145d6dc3dd
+  mode: single
+- id: '1699583900858'
+  alias: 'Switch: Bedroom All Lights Lights On'
+  description: Long Press On Button
+  trigger:
+  - device_id: 3f330cd2e69e8ee831d5c5f0ab4bc433
+    domain: hue
+    platform: device
+    type: long_press
+    subtype: 1
+    unique_id: b21ca135-d892-465c-91f0-934426a4a5c9
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      transition: 60
+      color_temp: 228
+      brightness_pct: 100
+    target:
+      device_id:
+      - 3e85e140da7932a78fa8c0c855488192
+      - 0df99c2f064682cb887bdbc6004b11ff
+      - 4f72c3af81e2dbfec9b42c8daa27bff6
+      - 10bd54ec1321964b8f42513d95569fb1
+      - ae9a7a6ecc1a78fb729248e254f52b32
+      - e2863f42283465b7f5d3f51bdbf80ca2
+      - 8fa0f75f077510dafcc4ba0cc5e02444
+      - 73e277806daafc32a080362e8ac7d9be
+      - 18b4a0379454cd85b2f18a962ffe8c30
+      - 2fbfe2a1a69c726b59f2876e08c597f9
+      - 04b3402eedc91e13a89c8d108bc7fd56
+      - 4285466a8f1c5d3a42b2db310dff1f69
+      - 303d1584166e2c7c7de70d806228e855
+      - 1e2569baf7100aa8803bea93d7c70707
+      - 7999bfaccf222410c3b9719e6c90c400
+      - eae7a004eda9adfbfde9b48862d25977
+      - adb799ad4a9a04501f78b0145d6dc3dd
+  mode: single
+- id: '1699584786811'
+  alias: 'Switch: Bedroom Lights On'
+  description: Short Press On Button
+  trigger:
+  - device_id: 3f330cd2e69e8ee831d5c5f0ab4bc433
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 1
+    unique_id: b21ca135-d892-465c-91f0-934426a4a5c9
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      transition: 5
+      color_temp: 234
+      brightness_pct: 100
+    target:
+      device_id:
+      - 3e85e140da7932a78fa8c0c855488192
+      - 0df99c2f064682cb887bdbc6004b11ff
+      - 4f72c3af81e2dbfec9b42c8daa27bff6
+      - 10bd54ec1321964b8f42513d95569fb1
+      - e2863f42283465b7f5d3f51bdbf80ca2
+      - 8fa0f75f077510dafcc4ba0cc5e02444
+  mode: single
+- id: '1699584906064'
+  alias: 'Switch: Bedroom Lights Off'
+  description: Short Press Off Button
+  trigger:
+  - device_id: 3f330cd2e69e8ee831d5c5f0ab4bc433
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 4
+    unique_id: 96d604ca-c2a4-4d4f-84f2-dbc6728ae2ae
+  condition: []
+  action:
+  - service: light.turn_off
+    data:
+      transition: 5
+    target:
+      device_id:
+      - 3e85e140da7932a78fa8c0c855488192
+      - 0df99c2f064682cb887bdbc6004b11ff
+      - 4f72c3af81e2dbfec9b42c8daa27bff6
+      - 10bd54ec1321964b8f42513d95569fb1
+      - e2863f42283465b7f5d3f51bdbf80ca2
+      - 8fa0f75f077510dafcc4ba0cc5e02444
+  mode: single
+- id: '1699590281953'
+  alias: 'Switch: Downstairs Lights Off'
+  description: Short Press Off Button
+  trigger:
+  - device_id: c0fe949098f7ff63239d22535cf3240a
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 4
+    unique_id: bce336b1-6bc2-4a46-bdd5-1c7bf7bbfd13
+  condition: []
+  action:
+  - service: light.turn_off
+    data:
+      transition: 5
+    target:
+      device_id:
+      - ae9a7a6ecc1a78fb729248e254f52b32
+      - 2fbfe2a1a69c726b59f2876e08c597f9
+      - 04b3402eedc91e13a89c8d108bc7fd56
+      - 1e2569baf7100aa8803bea93d7c70707
+      - 4285466a8f1c5d3a42b2db310dff1f69
+      - 303d1584166e2c7c7de70d806228e855
+  mode: single
+- id: '1699590566951'
+  alias: 'Switch: Downstairs Lights On'
+  description: Short Press On Button
+  trigger:
+  - device_id: c0fe949098f7ff63239d22535cf3240a
+    domain: hue
+    platform: device
+    type: short_release
+    subtype: 1
+    unique_id: 28d403aa-6339-4a1e-a63f-7f0e98dbccf0
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      color_temp: 412
+      brightness_pct: 100
+      transition: 15
+    target:
+      device_id:
+      - ae9a7a6ecc1a78fb729248e254f52b32
+      - 2fbfe2a1a69c726b59f2876e08c597f9
+      - 04b3402eedc91e13a89c8d108bc7fd56
+      - 4285466a8f1c5d3a42b2db310dff1f69
+      - 303d1584166e2c7c7de70d806228e855
+      - 1e2569baf7100aa8803bea93d7c70707
+  mode: single
+- alias: Adjust AC Units Based on Presence and Temperature
