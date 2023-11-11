@@ -13,7 +13,7 @@ secrets.yaml
 .storage
 .cloud
 .google.token
-home-assistant.log*
+home-assistant*.log*
 id_rsa*
 home-assistant_v2.db
 tts/
