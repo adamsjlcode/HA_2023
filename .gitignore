@@ -17,3 +17,4 @@ home-assistant*.log*
 id_rsa*
 home-assistant_v2.db
 tts/
+www/

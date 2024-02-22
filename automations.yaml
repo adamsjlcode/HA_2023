@@ -175,4 +175,46 @@
       - 303d1584166e2c7c7de70d806228e855
       - 1e2569baf7100aa8803bea93d7c70707
   mode: single
-- alias: Adjust AC Units Based on Presence and Temperature
+- id: '1699732340926'
+  alias: Frigidare Power Toggle
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.frigidaire_ac_button
+  condition: []
+  action:
+  - service: script.frigidaire_climate_control_upstairs_power_toggle
+    data: {}
+  mode: single
+- id: '1699732652226'
+  alias: LG AC Power Toggle
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.lg_ac_button
+  condition: []
+  action:
+  - service: script.lg_climate_control_upstairs_power_toggle
+    data: {}
+  mode: single
+- id: '1707603165027'
+  alias: Play Clock Sound on the Hour and Half-Hour
+  description: Plays a clock sound every hour and half-hour when the sun is up
+  trigger:
+  - platform: time_pattern
+    minutes: '0'
+  - platform: time_pattern
+    minutes: '30'
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: above_horizon
+  action:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.home
+    data:
+      media_content_id: media-source://media_source/local/antique-wood-chime-bell-ring.wav
+      media_content_type: music
