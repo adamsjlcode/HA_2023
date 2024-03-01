@@ -769,3 +769,10 @@ lg_tv_upstairs_tv_video:
     data:
       device: 80344500
       command: TvVideo
+'1709327333198':
+  alias: Set Frog Sound Playback for the Day
+  sequence:
+    service: input_boolean.turn_{{ 'on' if (range(1, 8) | random) == now().isoweekday()
+      else 'off' }}
+    data: {}
+    entity_id: input_boolean.frog_sounds_today
