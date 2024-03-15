@@ -1,7 +1,5 @@
 - name: Regular Lighting
   entities:
-    input_boolean.nighttime_lights:
-      state: "off"
     input_boolean.regular_lights:
       state: "on"
     input_boolean.theme_mode:

@@ -776,3 +776,140 @@ lg_tv_upstairs_tv_video:
       else 'off' }}
     data: {}
     entity_id: input_boolean.frog_sounds_today
+"1710040466415":
+  alias: Aurora Borealis V1
+  sequence:
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        media_content_id: https://www.youtube.com/watch?v=D5g11Op_Svg
+        media_content_type: audio/mp3
+    - service: light.turn_on
+      target:
+        entity_id:
+          - light.media_room_overhead_light
+
+          - light.bedroom_overhead_light
+      data:
+        rgb_color:
+          - 255
+          - 255
+          - 255
+        brightness: 50
+        transition: 5
+    - repeat:
+        count: 10
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id:
+                - light.media_room_overhead_light
+
+                - light.bedroom_overhead_light
+                - light.floorlamp
+                - light.bed_light_strip_1
+                - light.laundry_room_overhead_1
+                - light.stairs_light_strip
+                - light.kitchen_overhead_1
+                - light.living_room_light
+                - light.dining_room_light
+                - light.bedroom_overhead_light_3
+                - light.kitchen_overhead_2
+                - light.laundry_room_overhead_2
+
+                - light.bed_light_strip_2
+
+                - light.stairs_overhead_light
+
+            data:
+              rgb_color:
+                "{{ ['18, 97, 160', '5, 161, 105', '87, 3, 168'] | random
+                }}"
+              brightness: "{{ range(200, 255) | random }}"
+              transition: "{{ range(2, 4) | random }}"
+          - delay:
+              seconds: 3
+          - service: light.turn_on
+            target:
+              entity_id:
+                - light.media_room_overhead_light
+
+                - light.bedroom_overhead_light
+                - light.floorlamp
+                - light.bed_light_strip_1
+                - light.laundry_room_overhead_1
+                - light.stairs_light_strip
+                - light.kitchen_overhead_1
+                - light.living_room_light
+                - light.dining_room_light
+                - light.bedroom_overhead_light_3
+                - light.kitchen_overhead_2
+                - light.laundry_room_overhead_2
+
+                - light.bed_light_strip_2
+
+                - light.stairs_overhead_light
+
+            data:
+              rgb_color:
+                "{{ ['0, 128, 128', '128, 0, 128', '255, 99, 71'] | random
+                }}"
+              brightness: "{{ range(200, 255) | random }}"
+              transition: "{{ range(2, 4) | random }}"
+          - delay:
+              seconds: 3
+    - service: light.turn_on
+      target:
+        entity_id:
+          - light.media_room_overhead_light
+
+          - light.bedroom_overhead_light
+          - light.floorlamp
+          - light.bedroom_floorlamp
+          - light.bed_light_strip_1
+          - light.laundry_room_overhead_1
+          - light.stairs_light_strip
+          - light.kitchen_overhead_1
+          - light.living_room_light
+          - light.dining_room_light
+          - light.bedroom_overhead_light_3
+          - light.kitchen_overhead_2
+          - light.laundry_room_overhead_2
+
+          - light.bed_light_strip_2
+
+          - light.stairs_overhead_light
+
+      data:
+        rgb_color:
+          - 135
+          - 206
+          - 235
+        brightness: 100
+        transition: 5
+    - delay:
+        seconds: 5
+    - service: light.turn_off
+      target:
+        entity_id:
+          - light.media_room_overhead_light
+
+          - light.bedroom_overhead_light
+          - light.floorlamp
+          - light.bedroom_floorlamp
+          - light.bed_light_strip_1
+          - light.laundry_room_overhead_1
+          - light.stairs_light_strip
+          - light.kitchen_overhead_1
+          - light.living_room_light
+          - light.dining_room_light
+          - light.bedroom_overhead_light_3
+          - light.kitchen_overhead_2
+          - light.laundry_room_overhead_2
+
+          - light.bed_light_strip_2
+
+          - light.stairs_overhead_light
+
+      data: {}
+  mode: single
