@@ -325,3 +325,442 @@
       media_content_id: media-source://media_source/local/antique-wood-chime-bell-ring.wav
       media_content_type: music
   mode: single
+- id: '1710446570613'
+  alias: Late Night Lighting - Specific Areas
+  description: Activates dim lighting when motion is detected late at night (11 PM
+    - 6 AM), with a 5-minute turn-off timer post-motion.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.kitchen_motion_sensor
+    - binary_sensor.stair_motion_sensor
+    - binary_sensor.bedroom_motion_sensor
+    to: 'on'
+  condition:
+  - condition: time
+    after: '23:00:00'
+    before: 06:00:00
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.kitchen_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.kitchen_overhead_1
+        - light.kitchen_overhead_2
+        - light.laundry_room_overhead_1
+        - light.laundry_room_overhead_2
+        data:
+          brightness_pct: 30
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.stair_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.hallway_overhead_light
+        - light.stairs_light_strip
+        data:
+          brightness_pct: 30
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.bedroom_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.floorlamp
+        - light.bedroom_overhead_light
+        - light.bed_light_strip_1
+        - light.bed_light_strip_2
+        - light.media_room_overhead_light
+        data:
+          brightness_pct: 30
+  - delay: 00:05:00
+  - service: light.turn_off
+    entity_id:
+    - light.kitchen_overhead_1
+    - light.kitchen_overhead_2
+    - light.laundry_room_overhead_1
+    - light.laundry_room_overhead_2
+    - light.hallway_overhead_light
+    - light.stairs_light_strip
+    - light.floorlamp
+    - light.bedroom_overhead_light
+    - light.bed_light_strip_1
+    - light.bed_light_strip_2
+    - light.media_room_overhead_light
+- id: '1710446683456'
+  alias: Evening Lighting - Specific Areas
+  description: Turns on lights at full brightness in the evening (6 PM - 11 PM) upon
+    motion detection, with lights turning off after 15 minutes of inactivity.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.kitchen_motion_sensor
+    - binary_sensor.stair_motion_sensor
+    - binary_sensor.bedroom_motion_sensor
+    to: 'on'
+  condition:
+  - condition: time
+    after: '18:00:00'
+    before: '23:00:00'
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.kitchen_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.kitchen_overhead_1
+        - light.kitchen_overhead_2
+        - light.laundry_room_overhead_1
+        - light.laundry_room_overhead_2
+        data:
+          brightness_pct: 100
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.stair_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.hallway_overhead_light
+        - light.stairs_light_strip
+        data:
+          brightness_pct: 100
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.bedroom_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.floorlamp
+        - light.bedroom_overhead_light
+        - light.bed_light_strip_1
+        - light.bed_light_strip_2
+        - light.media_room_overhead_light
+        data:
+          brightness_pct: 100
+  - delay: 00:15:00
+  - service: light.turn_off
+    entity_id:
+    - light.kitchen_overhead_1
+    - light.kitchen_overhead_2
+    - light.laundry_room_overhead_1
+    - light.laundry_room_overhead_2
+    - light.hallway_overhead_light
+    - light.stairs_light_strip
+    - light.floorlamp
+    - light.bedroom_overhead_light
+    - light.bed_light_strip_1
+    - light.bed_light_strip_2
+    - light.media_room_overhead_light
+- id: '1710446799886'
+  alias: Afternoon Lighting - Specific Areas
+  description: Engages lights at minimal brightness during the afternoon (12 PM -
+    6 PM) in response to motion, turning off after 5 minutes without motion.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.kitchen_motion_sensor
+    - binary_sensor.stair_motion_sensor
+    - binary_sensor.bedroom_motion_sensor
+    to: 'on'
+  condition:
+  - condition: time
+    after: '12:00:00'
+    before: '18:00:00'
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.kitchen_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.kitchen_overhead_1
+        - light.kitchen_overhead_2
+        - light.laundry_room_overhead_1
+        - light.laundry_room_overhead_2
+        data:
+          brightness_pct: 20
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.stair_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.hallway_overhead_light
+        - light.stairs_light_strip
+        data:
+          brightness_pct: 20
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.bedroom_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.floorlamp
+        - light.bedroom_overhead_light
+        - light.bed_light_strip_1
+        - light.bed_light_strip_2
+        - light.media_room_overhead_light
+        data:
+          brightness_pct: 20
+  - delay: 00:05:00
+  - service: light.turn_off
+    entity_id:
+    - light.kitchen_overhead_1
+    - light.kitchen_overhead_2
+    - light.laundry_room_overhead_1
+    - light.laundry_room_overhead_2
+    - light.hallway_overhead_light
+    - light.stairs_light_strip
+    - light.floorlamp
+    - light.bedroom_overhead_light
+    - light.bed_light_strip_1
+    - light.bed_light_strip_2
+    - light.media_room_overhead_light
+- id: '1710447674520'
+  alias: Morning Lighting - Specific Areas
+  description: Initiates soft lighting in the morning (6 AM - 12 PM) upon motion detection,
+    with a 10-minute turn-off timer post-motion.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.kitchen_motion_sensor
+    - binary_sensor.stair_motion_sensor
+    - binary_sensor.bedroom_motion_sensor
+    to: 'on'
+  condition:
+  - condition: time
+    after: 06:00:00
+    before: '12:00:00'
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.kitchen_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.kitchen_overhead_1
+        - light.kitchen_overhead_2
+        - light.laundry_room_overhead_1
+        - light.laundry_room_overhead_2
+        data:
+          brightness_pct: 50
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.stair_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.hallway_overhead_light
+        - light.stairs_light_strip
+        data:
+          brightness_pct: 50
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.bedroom_motion_sensor
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.floorlamp
+        - light.bedroom_overhead_light
+        - light.bed_light_strip_1
+        - light.bed_light_strip_2
+        - light.media_room_overhead_light
+        data:
+          brightness_pct: 50
+  - delay: 00:10:00
+  - service: light.turn_off
+    entity_id:
+    - light.kitchen_overhead_1
+    - light.kitchen_overhead_2
+    - light.laundry_room_overhead_1
+    - light.laundry_room_overhead_2
+    - light.hallway_overhead_light
+    - light.stairs_light_strip
+    - light.floorlamp
+    - light.bedroom_overhead_light
+    - light.bed_light_strip_1
+    - light.bed_light_strip_2
+    - light.media_room_overhead_light
+- id: '1710448060055'
+  alias: Downstairs Lights On Door Open
+  description: Automatically turns on specific downstairs lights when either the front
+    or back door opens, providing immediate illumination.
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_door_contact
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.back_door_contact
+    to: 'on'
+  action:
+  - service: light.turn_on
+    entity_id:
+    - light.laundry_room_overhead_1
+    - light.laundry_room_overhead_2
+    - light.kitchen_overhead_1
+    - light.kitchen_overhead_2
+    - light.dining_room_light
+    - light.living_room_light
+- id: '1710448138109'
+  alias: Back Door Open TTS Alert
+  description: Sends a TTS alert through selected speakers when the back door is opened,
+    indicating which door was triggered.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.back_door_contact
+    to: 'on'
+    from:
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.kitchen_speaker
+      message: Back door opened.
+- id: '1710449018142'
+  alias: Front Door Open TTS Alert
+  description: Sends a TTS alert through selected speakers when the front door is
+    opened, indicating which door was triggered.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.front_door_contact
+    to: 'on'
+    from:
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.kitchen_speaker
+      message: Front door opened.
+  mode: single
+- id: '1710456631644'
+  alias: Persistent Theme Lights
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.hue_groups_dynamic_scening
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.theme_mode
+  mode: single
+- id: '1710456739075'
+  alias: Theme Is Runing
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.theme_mode
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.regular_lights
+      - input_boolean.nighttime_lights
+  mode: single
+- id: '1710456822979'
+  alias: Theme is off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.theme_mode
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    target:
+      entity_id:
+      - input_boolean.regular_lights
+    data: {}
+  mode: single
+- id: '1710457228688'
+  alias: Turn Regular Lights Back On
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.regular_lights
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.regular_lighting
+    data: {}
+  mode: single
+- id: '1710459299696'
+  alias: Media Room Presence
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.phone_charger_type
+    to: wireless
+  condition:
+  - condition: state
+    entity_id: sensor.phone_wifi_connection
+    state: AHOME
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      device_id: 7999bfaccf222410c3b9719e6c90c400
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sensor.phone_charger_type
+        state: wireless
+      sequence:
+      - service: automation.trigger
+        metadata: {}
+        data:
+          skip_condition: true
+        target:
+          entity_id: automation.media_room_presence
+    default:
+    - service: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        device_id: 7999bfaccf222410c3b9719e6c90c400
+  mode: single
