@@ -805,3 +805,39 @@
       target:
         device_id: 7999bfaccf222410c3b9719e6c90c400
   mode: single
+- id: '1710640274265'
+  alias: Bedroom AC Control
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.bedroom_motion_sensor_temperature
+    above: 75
+  - platform: numeric_state
+    entity_id: sensor.bedroom_motion_sensor_temperature
+    below: 70
+  - platform: time_pattern
+    hours: /01
+  condition:
+  - condition: template
+    value_template: '{{ is_state(''script.frigidaire_climate_control_upstairs_power_toggle'',
+      ''off'') and is_state(''script.lg_climate_control_upstairs_power_toggle'', ''off'')
+      }}'
+  action:
+  - choose:
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.bedroom_motion_sensor_temperature
+        above: 75
+      sequence:
+      - service: script.frigidaire_climate_control_upstairs_power_toggle
+      - service: script.lg_climate_control_upstairs_power_toggle
+      - delay: 01:00:00
+      - service: script.frigidaire_climate_control_upstairs_power_toggle
+      - service: script.lg_climate_control_upstairs_power_toggle
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.bedroom_motion_sensor_temperature
+        below: 70
+      sequence:
+      - service: script.frigidaire_climate_control_upstairs_power_toggle
+      - service: script.lg_climate_control_upstairs_power_toggle
