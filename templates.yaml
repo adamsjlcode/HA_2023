@@ -1,0 +1,59 @@
+- sensor:
+    - name: "Oven Stove Status"
+      unique_id: "oven_stove_status"
+      unit_of_measurement: "°F"
+      state: >
+        {% set current_temp = states('sensor.kitchen_motion_sensor_temperature_measurement') | float %}
+        {% set average_temp = states('sensor.average_kitchen_temperature') | float %}
+        {% set past_temp = state_attr('sensor.kitchen_motion_sensor_temperature_measurement', 'history_1') | float %}
+        {% if current_temp > (average_temp + 5) %}
+          "On"
+        {% elif current_temp < past_temp %}
+          "Off"
+        {% else %}
+          "Off"
+        {% endif %}
+      attributes:
+        current_temperature: "{{ current_temp }}"
+        average_temperature: "{{ average_temp }}"
+        temperature_trend: >
+          {% if current_temp > past_temp %}
+            "Rising"
+          {% elif current_temp < past_temp %}
+            "Falling"
+          {% else %}
+            "Stable"
+          {% endif %}
+        time_above_average: >
+          {% set last_changed = as_timestamp(states.sensor.kitchen_motion_sensor_temperature_measurement.last_changed) %}
+          {% set time_diff = as_timestamp(now()) - last_changed %}
+          {% if current_temp > (average_temp + 5) %}
+            {{ time_diff | timestamp_custom('%H:%M:%S', false) }}
+          {% else %}
+            "00:00:00"
+          {% endif %}
+        icon: >
+          {% if current_temp > (average_temp + 5) %}
+            mdi:stove
+          {% else %}
+            mdi:stove-off
+          {% endif %}
+    - name: "3 Hour Average Kitchen Temperature"
+      unique_id: kitchen_avg_temp_3hr
+      unit_of_measurement: "°F"
+      icon: mdi:thermometer
+      device_class: temperature
+      state: >
+        {% set current_time = now() %}
+        {% set past_time = current_time - timedelta(hours=3) %}
+        {% set temperature_readings = expand('sensor.kitchen_motion_sensor_temperature_measurement')
+            | selectattr('last_changed', '>', past_time)
+            | map(attribute='state') | map('float') | list %}
+        {% if temperature_readings | length > 0 %}
+          {{ (temperature_readings | sum / temperature_readings | count) | round(2) }}
+        {% else %}
+          none
+        {% endif %}
+      attributes:
+        friendly_name: "Kitchen Temperature (3-Hour Average)"
+        description: "Average temperature in the kitchen over the last 3 hours."
