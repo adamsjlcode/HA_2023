@@ -183,97 +183,10 @@
       data:
         media_content_id: media-source://media_source/local/antique-wood-chime-bell-ring.wav
         media_content_type: music
-- id: '1709228035694'
-  alias: Random Frog Chime During Daylight Hours
-  description: Plays a random frog call every hour during daylight hours on randomly
-    selected days.
-  trigger:
-    - platform: time_pattern
-      hours: /1
-      minutes: 0
-      seconds: 0
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: above_horizon
-    - condition: state
-    entity_id: input_boolean.frog_sounds_today
-    state: 'on'
-    enabled: true
-  action:
-    - variables:
-      chosen_frog: '{{ [''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/barking-treefrog-chorus.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/bird-voiced-treefrog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/bronze-frog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/carpenter-frog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2020/11/southern-gray-treefrog-mating-call.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2020/11/southern-gray-treefrog-rain-call.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/narrow-mouthed-toad.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/florida-gopher-frog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/green-treefrog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/green-treefrog-chorus.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/green-treefrog-rain-call.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/little-grass-frog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/little-grass-frog-rhythmic.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/oak-toad-breeding-call.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/ornate-chorus-frog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/pig-frog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/pinewoods-treefrog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/pinewoods-treefrog-chorus.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/florida-chorus-frog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/southern-cricket-frog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/southern-cricket-frog-chorus.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/southern-leopard-frog-chorus.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/southern-toad-breeding-chorus.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/spring-peeper.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2020/11/spring-peeper-chorus-mating-call.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/squirrel-treefrog.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/squirrel-treefrog-chorus.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/group-chorus-spring.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/group-chorus-summer-july.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/group-chorus-summer-august.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/group-chorus-winter.mp3'',
-        ''https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2020/10/Cuban-treefrog-calls_03.mp3''
-          ][(range(0, 32) | random)] }}
-
-        '
-    - service: media_player.volume_set
-      data:
-      volume_level: 1
-    target:
-        entity_id: media_player.bedroom_speaker
-    - service: media_player.play_media
-      data_template:
-        entity_id: media_player.bedroom_speaker
-      media_content_id: '{{ chosen_frog }}'
-        media_content_type: music
-    - service: media_player.volume_set
-      data:
-      volume_level: 1
-    target:
-        entity_id: media_player.kitchen_speaker
-    - service: media_player.play_media
-      data_template:
-        entity_id: media_player.kitchen_speaker
-      media_content_id: '{{ chosen_frog }}'
-        media_content_type: music
-  mode: single
-- id: '1709326067269'
-  alias: Determine Daily Frog Sound Playback
-  description: This automation will run the script just after midnight each day to
-    randomly determine if the frog sounds should play that day.
-  trigger:
-    - platform: time
-      at: 00:01:00
-  action:
-  - service: script.1709327333198
-    data: {}
 - id: '1709497089270'
   alias: Play Clock Sound on the Hour
-  description: 'Plays a clock sound every hour when the sun is up and not playing
-    frog sounds
-
-    '
+  description: Plays a clock sound every hour when the sun is up and not playing frog
+    sounds
   trigger:
   - platform: time_pattern
     minutes: '0'
@@ -297,10 +210,21 @@
   description: Mimic Hue dynamic scene on Sengled lights
   trigger:
   - platform: template
-    value_template: '{{ is_state_attr(''light.floorlamp'', ''dynamics'', ''dynamic_palette'')}}'
+    value_template: '{{ is_state_attr(''light.home'', ''dynamics'', ''true'')}}'
+    enabled: true
+  - platform: state
+    entity_id:
+    - input_boolean.theme_mode
+    from:
+    to: 'on'
+  - platform: state
+    entity_id:
+    - binary_sensor.music_area_entertainment_configuration
+    from:
+    to: 'on'
   action:
   - service: light.turn_on
-    data_template:
+    data:
       entity_id:
       - light.bed_light_strip_1
       - light.laundry_room_overhead_1
@@ -308,16 +232,16 @@
       rgb_color: '{{ state_attr(''light.media_room_overhead_light'', ''rgb_color'')
         }}'
   - service: light.turn_on
-    data_template:
+    data:
       entity_id:
       - light.stairs_light_strip
       - light.kitchen_overhead_1
       - light.living_room_light
-      brightness: '{{ state_attr(''light.hallway_overhead_light'', ''brightness'')
+      brightness: '{{ state_attr(''light.stairs_overhead_light'', ''brightness'')
         }}'
-      rgb_color: '{{ state_attr(''light.hallway_overhead_light'', ''rgb_color'') }}'
+      rgb_color: '{{ state_attr(''light.stairs_overhead_light'', ''rgb_color'') }}'
   - service: light.turn_on
-    data_template:
+    data:
       entity_id:
       - light.kitchen_overhead_2
       - light.laundry_room_overhead_2
@@ -325,310 +249,14 @@
         }}'
       rgb_color: '{{ state_attr(''light.bedroom_overhead_light'', ''rgb_color'') }}'
   - service: light.turn_on
-    data_template:
+    data:
       entity_id:
       - light.dining_room_light
       - light.bed_light_strip_2
       brightness: '{{ state_attr(''light.floorlamp'', ''brightness'') }}'
       rgb_color: '{{ state_attr(''light.floorlamp'', ''rgb_color'') }}'
-  mode: queued
+  mode: single
   max: 10
-- id: '1710446570613'
-  alias: Late Night Lighting - Specific Areas
-  description: Activates dim lighting when motion is detected late at night (11 PM
-    - 6 AM), with a 5-minute turn-off timer post-motion.
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.kitchen_motion_sensor
-    - binary_sensor.stair_motion_sensor
-    - binary_sensor.bedroom_motion_sensor
-    to: 'on'
-  condition:
-  - condition: time
-    after: '23:00:00'
-    before: 06:00:00
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.kitchen_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.kitchen_overhead_1
-        - light.kitchen_overhead_2
-        - light.laundry_room_overhead_1
-        - light.laundry_room_overhead_2
-        data:
-          brightness_pct: 30
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.stair_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.hallway_overhead_light
-        - light.stairs_light_strip
-        data:
-          brightness_pct: 30
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.bedroom_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.floorlamp
-        - light.bedroom_overhead_light
-        - light.bed_light_strip_1
-        - light.bed_light_strip_2
-        - light.media_room_overhead_light
-        data:
-          brightness_pct: 30
-  - delay: 00:05:00
-  - service: light.turn_off
-    entity_id:
-    - light.kitchen_overhead_1
-    - light.kitchen_overhead_2
-    - light.laundry_room_overhead_1
-    - light.laundry_room_overhead_2
-    - light.hallway_overhead_light
-    - light.stairs_light_strip
-    - light.floorlamp
-    - light.bedroom_overhead_light
-    - light.bed_light_strip_1
-    - light.bed_light_strip_2
-    - light.media_room_overhead_light
-- id: '1710446683456'
-  alias: Evening Lighting - Specific Areas
-  description: Turns on lights at full brightness in the evening (6 PM - 11 PM) upon
-    motion detection, with lights turning off after 15 minutes of inactivity.
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.kitchen_motion_sensor
-    - binary_sensor.stair_motion_sensor
-    - binary_sensor.bedroom_motion_sensor
-    to: 'on'
-  condition:
-  - condition: time
-    after: '18:00:00'
-    before: '23:00:00'
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.kitchen_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.kitchen_overhead_1
-        - light.kitchen_overhead_2
-        - light.laundry_room_overhead_1
-        - light.laundry_room_overhead_2
-        data:
-          brightness_pct: 100
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.stair_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.stairs_overhead_light
-        - light.stairs_light_strip
-        data:
-          brightness_pct: 100
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.bedroom_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.floorlamp
-        - light.bedroom_overhead_light
-        - light.bed_light_strip_1
-        - light.bed_light_strip_2
-        - light.media_room_overhead_light
-        data:
-          brightness_pct: 100
-  - delay: 00:15:00
-  - service: light.turn_off
-    entity_id:
-    - light.kitchen_overhead_1
-    - light.kitchen_overhead_2
-    - light.laundry_room_overhead_1
-    - light.laundry_room_overhead_2
-    - light.hallway_overhead_light
-    - light.stairs_light_strip
-    - light.floorlamp
-    - light.bedroom_overhead_light
-    - light.bed_light_strip_1
-    - light.bed_light_strip_2
-    - light.media_room_overhead_light
-- id: '1710446799886'
-  alias: Afternoon Lighting - Specific Areas
-  description: Engages lights at minimal brightness during the afternoon (12 PM -
-    6 PM) in response to motion, turning off after 5 minutes without motion.
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.kitchen_motion_sensor
-    - binary_sensor.stair_motion_sensor
-    - binary_sensor.bedroom_motion_sensor
-    to: 'on'
-  condition:
-  - condition: time
-    after: '12:00:00'
-    before: '18:00:00'
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.kitchen_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.kitchen_overhead_1
-        - light.kitchen_overhead_2
-        - light.laundry_room_overhead_1
-        - light.laundry_room_overhead_2
-        data:
-          brightness_pct: 20
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.stair_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.hallway_overhead_light
-        - light.stairs_light_strip
-        data:
-          brightness_pct: 20
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.bedroom_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.floorlamp
-        - light.bedroom_overhead_light
-        - light.bed_light_strip_1
-        - light.bed_light_strip_2
-        - light.media_room_overhead_light
-        data:
-          brightness_pct: 20
-  - delay: 00:05:00
-  - service: light.turn_off
-    entity_id:
-    - light.kitchen_overhead_1
-    - light.kitchen_overhead_2
-    - light.laundry_room_overhead_1
-    - light.laundry_room_overhead_2
-    - light.hallway_overhead_light
-    - light.stairs_light_strip
-    - light.floorlamp
-    - light.bedroom_overhead_light
-    - light.bed_light_strip_1
-    - light.bed_light_strip_2
-    - light.media_room_overhead_light
-- id: '1710447674520'
-  alias: Morning Lighting - Specific Areas
-  description: Initiates soft lighting in the morning (6 AM - 12 PM) upon motion detection,
-    with a 10-minute turn-off timer post-motion.
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.kitchen_motion_sensor
-    - binary_sensor.stair_motion_sensor
-    - binary_sensor.bedroom_motion_sensor
-    to: 'on'
-  condition:
-  - condition: time
-    after: 06:00:00
-    before: '12:00:00'
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.kitchen_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.kitchen_overhead_1
-        - light.kitchen_overhead_2
-        - light.laundry_room_overhead_1
-        - light.laundry_room_overhead_2
-        data:
-          brightness_pct: 50
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.stair_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.hallway_overhead_light
-        - light.stairs_light_strip
-        data:
-          brightness_pct: 50
-    - conditions:
-      - condition: state
-        entity_id: binary_sensor.bedroom_motion_sensor
-        state: 'on'
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.floorlamp
-        - light.bedroom_overhead_light
-        - light.bed_light_strip_1
-        - light.bed_light_strip_2
-        - light.media_room_overhead_light
-        data:
-          brightness_pct: 50
-  - delay: 00:10:00
-  - service: light.turn_off
-    entity_id:
-    - light.kitchen_overhead_1
-    - light.kitchen_overhead_2
-    - light.laundry_room_overhead_1
-    - light.laundry_room_overhead_2
-    - light.hallway_overhead_light
-    - light.stairs_light_strip
-    - light.floorlamp
-    - light.bedroom_overhead_light
-    - light.bed_light_strip_1
-    - light.bed_light_strip_2
-    - light.media_room_overhead_light
-- id: '1710448060055'
-  alias: Downstairs Lights On Door Open
-  description: Automatically turns on specific downstairs lights when either the front
-    or back door opens, providing immediate illumination.
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.front_door_contact
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.back_door_contact
-    to: 'on'
-  action:
-  - service: light.turn_on
-    entity_id:
-    - light.laundry_room_overhead_1
-    - light.laundry_room_overhead_2
-    - light.kitchen_overhead_1
-    - light.kitchen_overhead_2
-    - light.dining_room_light
-    - light.living_room_light
 - id: '1710456631644'
   alias: Persistent Theme Lights
   description: ''
@@ -705,172 +333,6 @@
         > max_adjustment %}\n  {% set calculated_brightness = max_adjustment %}\n{%
         elif calculated_brightness < 0 %}\n  {% set calculated_brightness = 0 %}\n{%
         endif %}\n{{ calculated_brightness }}\n"
-  mode: single
-- id: '1710545712946'
-  alias: Turn Off Lights on No Motion
-  description: Turns off lights in various areas when no motion is detected, with
-    room-specific delays.
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.bedroom_motion_sensor
-    to: 'off'
-    for: 00:{{ '%02d' | format(states('input_number.bedroom_no_motion_delay') | int)
-      }}:00
-    id: bedroom_no_motion
-  - platform: state
-    entity_id: binary_sensor.kitchen_motion_sensor
-    to: 'off'
-    for: 00:{{ '%02d' | format(states('input_number.kitchen_no_motion_delay') | int)
-      }}:00
-    id: kitchen_no_motion
-  - platform: state
-    entity_id: binary_sensor.stair_motion_sensor
-    to: 'off'
-    for: 00:{{ '%02d' | format(states('input_number.stairs_no_motion_delay') | int)
-      }}:00
-    id: stairs_no_motion
-  - platform: state
-    entity_id: binary_sensor.media_room_motion_sensor
-    to: 'off'
-    for: 00:{{ '%02d' | format(states('input_number.media_room_no_motion_delay') |
-      int) }}:00
-    id: media_room_no_motion
-  - platform: state
-    entity_id: binary_sensor.front_door_contact
-    to: closed
-    for: 00:{{ '%02d' | format(states('input_number.front_room_no_motion_delay') |
-      int) }}:00
-    id: front_door_closed
-  condition:
-  - condition: state
-    entity_id: input_boolean.theme_mode
-    state: 'off'
-  action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: bedroom_no_motion
-      sequence:
-    - service: light.turn_off
-        entity_id:
-        - light.bedroom_overhead_light
-        - light.bed_light_strip_1
-        - light.bed_light_strip_2
-        - light.floorlamp
-        - light.media_room_overhead_light
-    - conditions:
-      - condition: trigger
-        id: kitchen_no_motion
-      sequence:
-      - service: light.turn_off
-        entity_id:
-        - light.kitchen_overhead_1
-        - light.kitchen_overhead_2
-        - light.laundry_room_overhead_1
-        - light.laundry_room_overhead_2
-    - conditions:
-      - condition: trigger
-        id: stairs_no_motion
-      sequence:
-      - service: light.turn_off
-        entity_id:
-        - light.stairs_light_strip
-        - light.stairs_overhead_light
-    - conditions:
-      - condition: trigger
-        id: media_room_no_motion
-      sequence:
-      - service: light.turn_off
-        entity_id:
-        - light.media_room_overhead_light
-    - conditions:
-      - condition: trigger
-        id: front_door_closed
-      sequence:
-      - service: light.turn_off
-        entity_id:
-        - light.living_room_light
-        - light.dining_room_light
-  mode: parallel
-  max: 10
-- id: '1710639809027'
-  alias: All time
-  description: Activates dim lighting when motion is detected
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.bedroom_motion_sensor
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.bedroom_motion_delay') | int)
-      }}
-    id: bedroom_motion
-  - platform: state
-    entity_id: binary_sensor.kitchen_motion_sensor
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.kitchen_motion_delay') | int)
-      }}
-    id: kitchen_motion
-  - platform: state
-    entity_id: binary_sensor.media_room_motion_sensor
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.media_room_motion_delay') |
-      int) }}
-    id: media_room_motion
-  - platform: state
-    entity_id: binary_sensor.stair_motion_sensor
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.stairs_motion_delay') | int)
-      }}
-    id: stairs_motion
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: kitchen_motion
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.kitchen_overhead_1
-        - light.kitchen_overhead_2
-        - light.laundry_room_overhead_1
-        - light.laundry_room_overhead_2
-        data:
-          kelvin: 3000
-          brightness: '{{ states(''input_number.home_light_brightness'') | int }}'
-    - conditions:
-      - condition: trigger
-        id: stairs_motion
-      sequence:
-      - service: light.turn_ON
-        entity_id:
-        - light.stairs_overhead_light
-        - light.stairs_light_strip
-        data:
-          kelvin: 3000
-          brightness: '{{ states(''input_number.home_light_brightness'') | int }}'
-    - conditions:
-      - condition: trigger
-        id: bedroom_motion
-      sequence:
-      - service: light.turn_on
-        entity_id:
-        - light.floorlamp
-        - light.bedroom_overhead_light
-        - light.bed_light_strip_1
-        - light.bed_light_strip_2
-        data:
-          kelvin: 3000
-          brightness: '{{ states(''input_number.home_light_brightness'') | int }}'
-    - conditions:
-      - condition: trigger
-        id: media_room_motion
-      sequence:
-      - service: light.turn_ON
-        entity_id:
-        - light.media_room_overhead_light
-        data:
-          kelvin: 3000
-          brightness: '{{ states(''input_number.home_light_brightness'') | int }}'
   mode: single
 - id: '1710640274265'
   alias: Bedroom AC Control
@@ -965,3 +427,140 @@
         data:
           message: Front Door opened.
           entity_id: media_player.bedroom_speaker
+- id: '1710639809027'
+  alias: Turn On Lights on Motion
+  description: Turns on lights in various areas when no motion is detected, with room-specific
+    delays.
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.bedroom_motion_sensor
+    to: 'on'
+    for: 00:00:{{ '%02d' | format(states('input_number.bedroom_motion_delay') | int)
+      }}
+    id: bedroom_motion
+  - platform: state
+    entity_id: binary_sensor.kitchen_motion_sensor
+    to: 'on'
+    for: 00:00:{{ '%02d' | format(states('input_number.kitchen_motion_delay') | int)
+      }}
+    id: kitchen_motion
+  - platform: state
+    entity_id: binary_sensor.media_room_motion_sensor
+    to: 'on'
+    for: 00:00:{{ '%02d' | format(states('input_number.media_room_motion_delay') |
+      int) }}
+    id: media_room_motion
+  - platform: state
+    entity_id: binary_sensor.stair_motion_sensor
+    to: 'on'
+    for: 00:00:{{ '%02d' | format(states('input_number.stairs_motion_delay') | int)
+      }}
+    id: stairs_motion
+  - platform: state
+    entity_id: binary_sensor.front_door_contact
+    to: 'on'
+    for: 00:00:{{ '%02d' | format(states('input_number.downstairs_motion_delay')|
+      int) }}
+    id: front_door_opened
+  - platform: state
+    entity_id: binary_sensor.back_door_contact
+    to: 'on'
+    for: 00:00:{{ '%02d' | format(states('input_number.downstairs_motion_delay')|
+      int) }}
+    id: back_door_opened
+  condition:
+  - condition: state
+    entity_id: input_boolean.theme_mode
+    state: 'off'
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: kitchen_motion
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.kitchen_overhead_1
+        - light.kitchen_overhead_2
+        - light.laundry_room_overhead_1
+        - light.laundry_room_overhead_2
+        data:
+          brightness_pct: '{{ light_brightness }}'
+          kelvin: '{{ light_kelvin }}'
+    - conditions:
+      - condition: trigger
+        id: stairs_motion
+      sequence:
+      - service: light.turn_ON
+        entity_id:
+        - light.stairs_overhead_light
+        - light.stairs_light_strip
+        data:
+          brightness_pct: '{{ light_brightness }}'
+          kelvin: '{{ light_kelvin }}'
+    - conditions:
+      - condition: trigger
+        id: bedroom_motion
+      sequence:
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: input_boolean.someone_sleeping
+            state: 'on'
+          sequence:
+          - service: light.turn_on
+            entity_id:
+            - light.bed_light_strip_1
+            - light.bed_light_strip_2
+            data:
+              kelvin: '{{ light_kelvin }}'
+              brightness_pct: 10
+        default:
+        - service: light.turn_on
+          entity_id:
+          - light.floorlamp
+          - light.bedroom_overhead_light
+          - light.bed_light_strip_1
+          - light.bed_light_strip_2
+          data:
+            brightness_pct: '{{ light_brightness }}'
+            kelvin: '{{ light_kelvin }}'
+    - conditions:
+      - condition: trigger
+        id: media_room_motion
+      sequence:
+      - service: light.turn_ON
+        entity_id:
+        - light.media_room_overhead_light
+        data:
+          brightness_pct: '{{ light_brightness }}'
+          kelvin: '{{ light_kelvin }}'
+    - conditions:
+      - condition: trigger
+        id: front_door_opened
+      sequence:
+      - service: light.turn_on
+        entity_id:
+        - light.living_room_light
+        - light.dining_room_light
+        data:
+          brightness_pct: '{{ light_brightness }}'
+          kelvin: '{{ light_kelvin }}'
+    - conditions:
+      - condition: trigger
+        id: back_door_opened
+      sequence:
+      - service: light.turn_ON
+        entity_id:
+        - light.kitchen_overhead_1
+        - light.kitchen_overhead_2
+        - light.laundry_room_overhead_1
+        - light.laundry_room_overhead_2
+        data:
+          brightness_pct: '{{ light_brightness }}'
+          kelvin: '{{ light_kelvin }}'
+  variables:
+    light_brightness: '{{ states(''input_number.home_light_brightness'') | int }}'
+    light_color: '{{ states(''input_select.light_color'') }}'
+    light_kelvin: '{{ states(''input_select.light_kelvin'') }}'
+  mode: single
