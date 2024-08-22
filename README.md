@@ -1,4 +1,5 @@
 Sure, I can help you save this information as a markdown file on your desktop. Here's the markdown version of the README file:
+
 ```markdown
 # Home Assistant Configuration
 This repository contains the configuration files for my Home Assistant setup. The configuration includes various scenes and their corresponding entity pictures.
@@ -6,15 +7,15 @@ This repository contains the configuration files for my Home Assistant setup. Th
 ## Table of Contents
 * [Project Overview](#project-overview)
 * [Getting Started](#getting-started)
-	+ [Prerequisites](#prerequisites)
-	+ [Installation](#installation)
-	+ [Configuration](#configuration)
+ + [Prerequisites](#prerequisites)
+ + [Installation](#installation)
+ + [Configuration](#configuration)
 * [Usage](#usage)
-	+ [Scenes](#scenes)
+ + [Scenes](#scenes)
 * [Contributing](#contributing)
-	+ [Pull Requests](#pull-requests)
-	+ [Reporting Bugs](#reporting-bugs)
-	+ [Feedback and Suggestions](#feedback-and-suggestions)
+ + [Pull Requests](#pull-requests)
+ + [Reporting Bugs](#reporting-bugs)
+ + [Feedback and Suggestions](#feedback-and-suggestions)
 * [License](#license)
 
 ## Project Overview
@@ -33,17 +34,22 @@ Before you begin, ensure you have met the following requirements:
 git clone https://github.com/yourusername/home-assistant-config.git
 cd home-assistant-config/
 ```
+
 2. **Copy the configuration files** to your Home Assistant configuration directory. Be cautious and make backups of your existing configuration files if necessary.
 3. **Restart Home Assistant** to apply the new configuration:
+
 ```bash
 docker restart home-assistant
 ```
+
 Or use the restart option within the Home Assistant UI.
 
 ### Configuration
+
 The main configuration file is `configuration.yaml`, which includes the setup for various scenes with custom entity pictures.
 
-#### Sample Configuration Snippet:
+#### Sample Configuration Snippet
+
 ```yaml
 homeassistant:
   customize_glob:
@@ -51,8 +57,11 @@ homeassistant:
       entity_picture: /local/hue_scene_icons/lake_mist.png
      # Add other scenes similarly
 ```
+
 ### Scenes
+
 The following scenes are configured with custom entity pictures:
+
 * adrift
 * amber_bloom
 * amethyst_valley
@@ -90,9 +99,11 @@ The following scenes are configured with custom entity pictures:
 Each scene is associated with an entity picture located in the `/local/hue_scene_icons/` directory. Simply activate a scene in Home Assistant to see the corresponding entity picture.
 
 ## Contributing
+
 Contributions are welcome! Please follow the guidelines below to contribute to the project.
 
 ### Pull Requests
+
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
 3. Make your changes.
@@ -101,12 +112,15 @@ Contributions are welcome! Please follow the guidelines below to contribute to t
 6. Open a pull request.
 
 ### Reporting Bugs
+
 To report a bug, open an issue on GitHub and include details about the bug and steps to reproduce it.
 
 ### Feedback and Suggestions
+
 Feedback and suggestions are always welcome. Feel free to open an issue on GitHub to discuss any ideas or improvements.
 
 ## License
+
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
