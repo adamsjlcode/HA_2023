@@ -19,3 +19,7 @@ enable_color_mode:
 someone_sleeping:
   name: Someone Sleeping
   icon: mdi:sleep
+
+sync_music_lights:
+  name: Sync Music Lights
+  icon: mdi:waveform
