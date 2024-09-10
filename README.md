@@ -1,5 +1,3 @@
-Sure, I can help you save this information as a markdown file on your desktop. Here's the markdown version of the README file:
-
 ```markdown
 # Home Assistant Configuration
 This repository contains the configuration files for my Home Assistant setup. The configuration includes various scenes and their corresponding entity pictures.
@@ -31,7 +29,7 @@ Before you begin, ensure you have met the following requirements:
 ### Installation
 1. **Clone the repository**:
 ```bash
-git clone https://github.com/yourusername/home-assistant-config.git
+git clone [https://github.com/adamsjlcode/HA_2023.git]
 cd home-assistant-config/
 ```
 
