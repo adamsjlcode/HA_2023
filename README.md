@@ -1,4 +1,3 @@
-```markdown
 # Home Assistant Configuration
 This repository contains the configuration files for my Home Assistant setup. The configuration includes various scenes and their corresponding entity pictures.
 
