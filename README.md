@@ -40,7 +40,6 @@ Before you begin, ensure you have met the following requirements:
    git clone [https://github.com/adamsjlcode/HassioConfig2023.git]
    cd home-assistant-config/
    ```
-````
 
 2. **Copy the configuration files** to your Home Assistant configuration directory. Be cautious and make backups of your existing configuration files if necessary.
 
