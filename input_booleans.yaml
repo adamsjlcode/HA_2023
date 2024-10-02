@@ -23,3 +23,7 @@ someone_sleeping:
 sync_music_lights:
   name: Sync Music Lights
   icon: mdi:waveform
+
+regular_lights:
+  name: Regular Lights
+  icon: mdi:regex
