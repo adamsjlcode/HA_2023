@@ -13,8 +13,6 @@ This folder contains various automations used in my Home Assistant setup. Each a
 
 ## Introduction
 
----
-
 ### Automation List
 
 **Adjust Brightness of On Lights Except Screens**
@@ -27,8 +25,6 @@ This automation adjusts the brightness of all lights that are currently on, exce
 - **Conditions**: None.
 - **Dependencies**: Lights that are turned on and exclude "\_screen" in their entity ID.
 
----
-
 **Turn Off Lights on No Motion**
 
 **Description**:  
@@ -39,8 +35,6 @@ This automation turns off lights in various areas of the home when no motion is 
 - **Conditions**: Runs only if `input_boolean.sync_music_lights` and `input_boolean.theme_mode` are both off.
 - **Dependencies**: Lights in the respective rooms, controlled by motion or contact sensors.
 
----
-
 **Switch: Bedroom All Lights Off (Long Press)**
 
 **Description**:  
@@ -49,8 +43,6 @@ This automation turns off all bedroom lights when the user long presses the off 
 - **Triggers**: Long press on the off button for the specified bedroom Hue dimmer switch.
 - **Actions**: Turns off all bedroom lights with a smooth 5-second transition.
 - **Conditions**: None.
-
----
 
 **Switch: Bedroom All Lights On (Long Press)**
 
@@ -61,8 +53,6 @@ This automation turns on all bedroom lights to full brightness and a warm color 
 - **Actions**: Turns on all bedroom lights with a 60-second transition, setting brightness to 100% and color temperature to 228.
 - **Conditions**: None.
 
----
-
 **Switch: Bedroom Lights On (Short Press)**
 
 **Description**:  
@@ -71,8 +61,6 @@ This automation turns on the bedroom lights when the user short presses the on b
 - **Triggers**: Short press on the on button for the specified bedroom Hue dimmer switch.
 - **Actions**: Turns on specified bedroom lights with a 5-second transition, setting brightness to 100% and color temperature to 234.
 - **Conditions**: None.
-
----
 
 **Switch: Bedroom Lights Off (Short Press)**
 
@@ -83,8 +71,6 @@ This automation turns off the bedroom lights when the user short presses the off
 - **Actions**: Turns off specified bedroom lights with a smooth 5-second transition.
 - **Conditions**: None.
 
----
-
 **Switch: Downstairs Lights On (Short Press)**
 
 **Description**:  
@@ -93,8 +79,6 @@ This automation turns on specified lights downstairs to full brightness with a c
 - **Triggers**: Short press on the on button for the specified downstairs Hue dimmer switch.
 - **Actions**: Turn on specified downstairs lights with a 15-second transition, setting brightness to 100% and color temperature to 412.
 - **Conditions**: None.
-
----
 
 **Switch: Downstairs Lights Off (Short Press)**
 
@@ -107,8 +91,6 @@ This automation turns off the specified downstairs lights when the user short pr
 
 Here’s the breakdown for your **Toggle Sleep Sensor** automation:
 
----
-
 **Toggle Sleep Sensor (Long Press)**
 
 **Description**:  
@@ -118,8 +100,14 @@ This automation toggles the `input_boolean.someone_sleeping` when the user long 
 - **Actions**: Toggles the `input_boolean.someone_sleeping`.
 - **Conditions**: None.
 
----
+**Door Open TTS Alert**
 
+**Description**:  
+This automation sends a TTS alert through selected speakers when the front or back door is opened, indicating which door was triggered.
+
+- **Triggers**: The back door or front door contact sensor changes to "on" (opened).
+- **Actions**: Sets volume and sends a TTS message to both speakers indicating which door was opened.
+- **Conditions**: None.
 
 ## How to Contribute
 
@@ -135,5 +123,3 @@ Contributions are welcome! To add new automations or improve existing ones, plea
 ## License
 
 This project is licensed under the MIT License.
-
----
