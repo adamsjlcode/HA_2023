@@ -148,7 +148,7 @@ This automation turns off the color mode, sync music lights, and theme mode when
 This automation turns on the normal lights input boolean when the theme mode is turned off.
 
 - **Triggers**: The `input_boolean.theme_mode` changes from "on" to "off".
-- **Actions**: 
+- **Actions**:
   - Turns on the normal lights input boolean.
 - **Conditions**: None.
 
@@ -158,7 +158,7 @@ This automation turns on the normal lights input boolean when the theme mode is 
 This automation sets all lights to the color temperature selected in the `input_select.light_kelvin` dropdown. It disables color mode, theme mode, and sync music lights, and enables normal lights mode.
 
 - **Triggers**: A change in the selected temperature from the `input_select.light_kelvin` dropdown.
-- **Actions**: 
+- **Actions**:
   - Turns off color mode, theme mode, and sync music lights.
   - Enables normal lights mode.
   - Sets all lights to the selected color temperature.
@@ -170,7 +170,7 @@ This automation sets all lights to the color temperature selected in the `input_
 This automation triggers the power toggle script for the Frigidaire AC unit when the `input_boolean.frigidaire_ac_button` is toggled.
 
 - **Triggers**: A change in the `input_boolean.frigidaire_ac_button` state.
-- **Actions**: 
+- **Actions**:
   - Runs the Frigidaire climate control power toggle script.
 - **Conditions**: None.
 
@@ -180,7 +180,7 @@ This automation triggers the power toggle script for the Frigidaire AC unit when
 This automation triggers the power toggle script for the LG AC unit when the `input_boolean.lg_ac_button` is toggled.
 
 - **Triggers**: A change in the `input_boolean.lg_ac_button` state.
-- **Actions**: 
+- **Actions**:
   - Runs the LG climate control power toggle script.
 - **Conditions**: None.
 
@@ -190,9 +190,19 @@ This automation triggers the power toggle script for the LG AC unit when the `in
 This automation mimics the Hue dynamic scenes on Sengled lights by matching the brightness and RGB color attributes of various Hue lights with the Sengled lights.
 
 - **Triggers**: A change in the dynamics attribute of the Hue lights.
-- **Actions**: 
+- **Actions**:
   - Synchronizes the brightness and RGB color of the Sengled lights with the corresponding Hue lights.
 - **Conditions**: None.
+
+**Turn On Lights on Motion**
+
+**Description**:  
+This automation turns on lights in various areas when motion is detected, with room-specific delays. The brightness and color of the lights are controlled by the current lighting mode (normal or color mode).
+
+- **Triggers**: Motion detected by sensors in the bedroom, kitchen, stairs, media room, or at the front and back doors.
+- **Actions**:
+  - Turns on lights in the corresponding room with brightness and color based on the lighting mode and current settings.
+- **Conditions**: Only triggers if both `input_boolean.sync_music_lights` and `input_boolean.theme_mode` are off.
 
 ## How to Contribute
 
