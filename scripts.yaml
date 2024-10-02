@@ -1,3 +1,27 @@
+db_remove_orphaned_entities:
+  alias: '[HA DB] Purge Orphaned Entities from Database'
+description: Purge Orphaned Entities from Database
+icon: mdi:delete-sweep
+sequence:
+- action: homeassistant.list_orphaned_database_entities
+  response_variable: orphaned
+- action: recorder.purge_entities
+  target:
+    entity_id: '{{ orphaned.entities }}
+
+      '
+  data:
+    keep_days: 0
+mode: single
+open_weather_channel_command:
+  sequence:
+  - action: webostv.command
+    target:
+      entity_id: media_player.lg_webos_smart_tv
+    data:
+      command: system.launcher/open
+      payload:
+        target: http://69.69.69.69:5080
 lg_climate_control_upstairs_power_toggle:
   alias: LG Climate Control Power Toggle - Upstairs
   sequence:
@@ -9,7 +33,6 @@ lg_climate_control_upstairs_power_toggle:
       command: PowerToggle
   icon: mdi:power
   mode: single
-
 lg_climate_control_upstairs_c_f_toggle:
   alias: LG Climate Control C-F Toggle - Upstairs
   sequence:
@@ -21,7 +44,6 @@ lg_climate_control_upstairs_c_f_toggle:
       command: C-F
   icon: mdi:temperature-celsius
   mode: single
-
 lg_climate_control_upstairs_cool:
   alias: LG Climate Control Cool - Upstairs
   sequence:
@@ -33,7 +55,6 @@ lg_climate_control_upstairs_cool:
       command: Cool
   icon: mdi:snowflake
   mode: single
-
 lg_climate_control_upstairs_dry:
   alias: LG Climate Control Dry - Upstairs
   sequence:
@@ -45,7 +66,6 @@ lg_climate_control_upstairs_dry:
       command: Dry
   icon: mdi:water-percent
   mode: single
-
 lg_climate_control_upstairs_fan_high:
   alias: LG Climate Control Fan High - Upstairs
   sequence:
@@ -57,7 +77,6 @@ lg_climate_control_upstairs_fan_high:
       command: FanHigh
   icon: mdi:fan-speed-3
   mode: single
-
 lg_climate_control_upstairs_fan_low:
   alias: LG Climate Control Fan Low - Upstairs
   sequence:
@@ -69,7 +88,6 @@ lg_climate_control_upstairs_fan_low:
       command: FanLow
   icon: mdi:fan-speed-1
   mode: single
-
 lg_climate_control_upstairs_fan_mode:
   alias: LG Climate Control Fan Mode - Upstairs
   sequence:
@@ -81,7 +99,6 @@ lg_climate_control_upstairs_fan_mode:
       command: FanMode
   icon: mdi:fan-auto
   mode: single
-
 lg_climate_control_upstairs_sleep:
   alias: LG Climate Control Sleep - Upstairs
   sequence:
@@ -93,7 +110,6 @@ lg_climate_control_upstairs_sleep:
       command: Sleep
   icon: mdi:sleep
   mode: single
-
 lg_climate_control_upstairs_swing:
   alias: LG Climate Control Swing - Upstairs
   sequence:
@@ -105,7 +121,6 @@ lg_climate_control_upstairs_swing:
       command: Swing
   icon: mdi:sync
   mode: single
-
 lg_climate_control_upstairs_temp_cooler:
   alias: LG Climate Control Temperature Cooler - Upstairs
   sequence:
@@ -117,7 +132,6 @@ lg_climate_control_upstairs_temp_cooler:
       command: TempCooler
   icon: mdi:thermometer-minus
   mode: single
-
 lg_climate_control_upstairs_temp_hotter:
   alias: LG Climate Control Temperature Hotter - Upstairs
   sequence:
@@ -129,7 +143,6 @@ lg_climate_control_upstairs_temp_hotter:
       command: TempHotter
   icon: mdi:thermometer-plus
   mode: single
-
 lg_climate_control_upstairs_timer:
   alias: LG Climate Control Timer - Upstairs
   sequence:
@@ -141,7 +154,6 @@ lg_climate_control_upstairs_timer:
       command: Timer
   icon: mdi:timer-sand
   mode: single
-
 frigidaire_climate_control_upstairs_power_toggle:
   alias: Frigidaire Climate Control Power Toggle - Upstairs
   sequence:
@@ -153,7 +165,6 @@ frigidaire_climate_control_upstairs_power_toggle:
       command: PowerToggle
   icon: mdi:power-standby
   mode: single
-
 frigidaire_climate_control_upstairs_ac_mode:
   alias: Frigidaire Climate Control AC Mode - Upstairs
   sequence:
@@ -165,7 +176,6 @@ frigidaire_climate_control_upstairs_ac_mode:
       command: AcMode
   icon: mdi:air-conditioner
   mode: single
-
 frigidaire_climate_control_upstairs_auto_cool:
   alias: Frigidaire Climate Control Auto Cool - Upstairs
   sequence:
@@ -177,7 +187,6 @@ frigidaire_climate_control_upstairs_auto_cool:
       command: AutoCool
   icon: mdi:autorenew
   mode: single
-
 frigidaire_climate_control_upstairs_energy_saver:
   alias: Frigidaire Climate Control Energy Saver - Upstairs
   sequence:
@@ -189,7 +198,6 @@ frigidaire_climate_control_upstairs_energy_saver:
       command: EnergySaver
   icon: mdi:battery-heart
   mode: single
-
 frigidaire_climate_control_upstairs_fan_mode:
   alias: Frigidaire Climate Control Fan Mode - Upstairs
   sequence:
@@ -201,7 +209,6 @@ frigidaire_climate_control_upstairs_fan_mode:
       command: FanMode
   icon: mdi:fan
   mode: single
-
 frigidaire_climate_control_upstairs_fan_speed_down:
   alias: Frigidaire Climate Control Fan Speed Down - Upstairs
   sequence:
@@ -213,7 +220,6 @@ frigidaire_climate_control_upstairs_fan_speed_down:
       command: FanSpeedDown
   icon: mdi:fan-speed-1
   mode: single
-
 frigidaire_climate_control_upstairs_fan_speed_up:
   alias: Frigidaire Climate Control Fan Speed Up - Upstairs
   sequence:
@@ -225,7 +231,6 @@ frigidaire_climate_control_upstairs_fan_speed_up:
       command: FanSpeedUp
   icon: mdi:fan-speed-3
   mode: single
-
 frigidaire_climate_control_upstairs_sleep:
   alias: Frigidaire Climate Control Sleep - Upstairs
   sequence:
@@ -237,7 +242,6 @@ frigidaire_climate_control_upstairs_sleep:
       command: Sleep
   icon: mdi:sleep
   mode: single
-
 frigidaire_climate_control_upstairs_temp_cooler:
   alias: Frigidaire Climate Control Temperature Cooler - Upstairs
   sequence:
@@ -249,7 +253,6 @@ frigidaire_climate_control_upstairs_temp_cooler:
       command: TempCooler
   icon: mdi:thermometer-minus
   mode: single
-
 frigidaire_climate_control_upstairs_temp_hotter:
   alias: Frigidaire Climate Control Temperature Hotter - Upstairs
   sequence:
@@ -261,7 +264,6 @@ frigidaire_climate_control_upstairs_temp_hotter:
       command: TempHotter
   icon: mdi:thermometer-plus
   mode: single
-
 frigidaire_climate_control_upstairs_timer:
   alias: Frigidaire Climate Control Timer - Upstairs
   sequence:
@@ -273,8 +275,6 @@ frigidaire_climate_control_upstairs_timer:
       command: Timer
   icon: mdi:timer-outline
   mode: single
-# LG TV Controls
-
 lg_tv_upstairs_power_on:
   alias: LG TV Power On - Upstairs
   sequence:
@@ -286,7 +286,6 @@ lg_tv_upstairs_power_on:
         command: PowerOn
   icon: mdi:power
   mode: single
-
 lg_tv_upstairs_power_off:
   alias: LG TV Power Off - Upstairs
   sequence:
@@ -298,7 +297,6 @@ lg_tv_upstairs_power_off:
         command: PowerOff
   icon: mdi:power-standby
   mode: single
-
 lg_tv_upstairs_power_toggle:
   alias: LG TV Power Toggle - Upstairs
   sequence:
@@ -310,7 +308,6 @@ lg_tv_upstairs_power_toggle:
       command: PowerToggle
   icon: mdi:television
   mode: single
-# Numeric Keypad Buttons
 lg_tv_upstairs_numeric_keypad_0:
   alias: LG TV Numeric Keypad 0 - Upstairs
   sequence:
@@ -319,7 +316,7 @@ lg_tv_upstairs_numeric_keypad_0:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "0"
+      command: '0'
   icon: mdi:numeric-0-circle-outline
   mode: single
 lg_tv_upstairs_numeric_keypad_1:
@@ -330,10 +327,9 @@ lg_tv_upstairs_numeric_keypad_1:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "1"
+      command: '1'
   icon: mdi:numeric-1-circle-outline
   mode: single
-
 lg_tv_upstairs_numeric_keypad_2:
   alias: LG TV Numeric Keypad 2 - Upstairs
   sequence:
@@ -342,10 +338,9 @@ lg_tv_upstairs_numeric_keypad_2:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "2"
+      command: '2'
   icon: mdi:numeric-2-circle-outline
   mode: single
-
 lg_tv_upstairs_numeric_keypad_3:
   alias: LG TV Numeric Keypad 3 - Upstairs
   sequence:
@@ -354,10 +349,9 @@ lg_tv_upstairs_numeric_keypad_3:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "3"
+      command: '3'
   icon: mdi:numeric-3-circle-outline
   mode: single
-
 lg_tv_upstairs_numeric_keypad_4:
   alias: LG TV Numeric Keypad 4 - Upstairs
   sequence:
@@ -366,10 +360,9 @@ lg_tv_upstairs_numeric_keypad_4:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "4"
+      command: '4'
   icon: mdi:numeric-4-circle-outline
   mode: single
-
 lg_tv_upstairs_numeric_keypad_5:
   alias: LG TV Numeric Keypad 5 - Upstairs
   sequence:
@@ -378,10 +371,9 @@ lg_tv_upstairs_numeric_keypad_5:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "5"
+      command: '5'
   icon: mdi:numeric-5-circle-outline
   mode: single
-
 lg_tv_upstairs_numeric_keypad_6:
   alias: LG TV Numeric Keypad 6 - Upstairs
   sequence:
@@ -390,10 +382,9 @@ lg_tv_upstairs_numeric_keypad_6:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "6"
+      command: '6'
   icon: mdi:numeric-6-circle-outline
   mode: single
-
 lg_tv_upstairs_numeric_keypad_7:
   alias: LG TV Numeric Keypad 7 - Upstairs
   sequence:
@@ -402,10 +393,9 @@ lg_tv_upstairs_numeric_keypad_7:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "7"
+      command: '7'
   icon: mdi:numeric-7-circle-outline
   mode: single
-
 lg_tv_upstairs_numeric_keypad_8:
   alias: LG TV Numeric Keypad 8 - Upstairs
   sequence:
@@ -414,10 +404,9 @@ lg_tv_upstairs_numeric_keypad_8:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "8"
+      command: '8'
   icon: mdi:numeric-8-circle-outline
   mode: single
-
 lg_tv_upstairs_numeric_keypad_9:
   alias: LG TV Numeric Keypad 9 - Upstairs
   sequence:
@@ -426,10 +415,9 @@ lg_tv_upstairs_numeric_keypad_9:
       entity_id: remote.upstairs
     data:
       device: 80344500
-        command: "9"
+      command: '9'
   icon: mdi:numeric-9-circle-outline
   mode: single
-# Directional Buttons
 lg_tv_upstairs_direction_up:
   alias: LG TV Direction Up - Upstairs
   sequence:
@@ -441,7 +429,6 @@ lg_tv_upstairs_direction_up:
         command: DirectionUp
   icon: mdi:arrow-up
   mode: single
-
 lg_tv_upstairs_direction_down:
   alias: LG TV Direction Down - Upstairs
   sequence:
@@ -453,7 +440,6 @@ lg_tv_upstairs_direction_down:
         command: DirectionDown
   icon: mdi:arrow-down
   mode: single
-
 lg_tv_upstairs_direction_left:
   alias: LG TV Direction Left - Upstairs
   sequence:
@@ -465,7 +451,6 @@ lg_tv_upstairs_direction_left:
         command: DirectionLeft
   icon: mdi:arrow-left
   mode: single
-
 lg_tv_upstairs_direction_right:
   alias: LG TV Direction Right - Upstairs
   sequence:
@@ -477,8 +462,6 @@ lg_tv_upstairs_direction_right:
         command: DirectionRight
   icon: mdi:arrow-right
   mode: single
-
-# Player Controls
 lg_tv_upstairs_play:
   alias: LG TV Play - Upstairs
   sequence:
@@ -490,7 +473,6 @@ lg_tv_upstairs_play:
         command: Play
   icon: mdi:play
   mode: single
-
 lg_tv_upstairs_pause:
   alias: LG TV Pause - Upstairs
   sequence:
@@ -502,7 +484,6 @@ lg_tv_upstairs_pause:
         command: Pause
   icon: mdi:pause
   mode: single
-
 lg_tv_upstairs_stop:
   alias: LG TV Stop - Upstairs
   sequence:
@@ -514,7 +495,6 @@ lg_tv_upstairs_stop:
         command: Stop
   icon: mdi:stop
   mode: single
-
 lg_tv_upstairs_rewind:
   alias: LG TV Rewind - Upstairs
   sequence:
@@ -526,7 +506,6 @@ lg_tv_upstairs_rewind:
         command: Rewind
   icon: mdi:rewind
   mode: single
-
 lg_tv_upstairs_fast_forward:
   alias: LG TV Fast Forward - Upstairs
   sequence:
@@ -538,8 +517,6 @@ lg_tv_upstairs_fast_forward:
         command: FastForward
   icon: mdi:fast-forward
   mode: single
-
-# Special Function Buttons
 lg_tv_upstairs_menu:
   alias: LG TV Menu - Upstairs
   sequence:
@@ -551,7 +528,6 @@ lg_tv_upstairs_menu:
         command: Menu
   icon: mdi:menu
   mode: single
-
 lg_tv_upstairs_info:
   alias: LG TV Info - Upstairs
   sequence:
@@ -563,8 +539,6 @@ lg_tv_upstairs_info:
         command: Info
   icon: mdi:information-outline
   mode: single
-
-
 lg_tv_upstairs_exit:
   alias: LG TV Exit - Upstairs
   sequence:
@@ -576,7 +550,6 @@ lg_tv_upstairs_exit:
         command: Exit
   icon: mdi:exit-to-app
   mode: single
-# Volume and Mute Controls
 lg_tv_upstairs_volume_up:
   alias: LG TV Volume Up - Upstairs
   sequence:
@@ -588,7 +561,6 @@ lg_tv_upstairs_volume_up:
         command: VolumeUp
   icon: mdi:volume-plus
   mode: single
-
 lg_tv_upstairs_volume_down:
   alias: LG TV Volume Down - Upstairs
   sequence:
@@ -600,7 +572,6 @@ lg_tv_upstairs_volume_down:
         command: VolumeDown
   icon: mdi:volume-minus
   mode: single
-
 lg_tv_upstairs_mute:
   alias: LG TV Mute - Upstairs
   sequence:
@@ -612,8 +583,6 @@ lg_tv_upstairs_mute:
         command: Mute
   icon: mdi:volume-mute
   mode: single
-
-# Channel Controls
 lg_tv_upstairs_channel_up:
   alias: LG TV Channel Up - Upstairs
   sequence:
@@ -625,7 +594,6 @@ lg_tv_upstairs_channel_up:
         command: ChannelUp
   icon: mdi:chevron-up-box
   mode: single
-
 lg_tv_upstairs_channel_down:
   alias: LG TV Channel Down - Upstairs
   sequence:
@@ -637,7 +605,6 @@ lg_tv_upstairs_channel_down:
         command: ChannelDown
   icon: mdi:chevron-down-box
   mode: single
-
 lg_tv_upstairs_channel_prev:
   alias: LG TV Channel Previous - Upstairs
   sequence:
@@ -649,8 +616,6 @@ lg_tv_upstairs_channel_prev:
         command: ChannelPrev
   icon: mdi:history
   mode: single
-
-# Input Selection
 lg_tv_upstairs_input_next:
   alias: LG TV Input Next - Upstairs
   sequence:
@@ -662,8 +627,6 @@ lg_tv_upstairs_input_next:
         command: InputNext
   icon: mdi:input
   mode: single
-
-# HDMI Input Selection
 lg_tv_upstairs_input_hdmi1:
   alias: LG TV Input HDMI1 - Upstairs
   sequence:
@@ -675,7 +638,6 @@ lg_tv_upstairs_input_hdmi1:
         command: InputHdmi1
   icon: mdi:video-input-hdmi
   mode: single
-
 lg_tv_upstairs_input_hdmi2:
   alias: LG TV Input HDMI2 - Upstairs
   sequence:
@@ -687,7 +649,6 @@ lg_tv_upstairs_input_hdmi2:
         command: InputHdmi2
   icon: mdi:video-input-hdmi
   mode: single
-
 lg_tv_upstairs_input_hdmi3:
   alias: LG TV Input HDMI3 - Upstairs
   sequence:
@@ -699,8 +660,6 @@ lg_tv_upstairs_input_hdmi3:
         command: InputHdmi3
   icon: mdi:video-input-hdmi
   mode: single
-
-# AV Input Selection
 lg_tv_upstairs_input_av1:
   alias: LG TV Input AV1 - Upstairs
   sequence:
@@ -712,7 +671,6 @@ lg_tv_upstairs_input_av1:
         command: InputAv1
   icon: mdi:video-input-component
   mode: single
-
 lg_tv_upstairs_input_av2:
   alias: LG TV Input AV2 - Upstairs
   sequence:
@@ -724,8 +682,6 @@ lg_tv_upstairs_input_av2:
         command: InputAv2
   icon: mdi:video-input-component
   mode: single
-
-# Component Input Selection
 lg_tv_upstairs_input_component1:
   alias: LG TV Input Component1 - Upstairs
   sequence:
@@ -737,7 +693,6 @@ lg_tv_upstairs_input_component1:
         command: InputComponent1
   icon: mdi:video-input-component
   mode: single
-
 lg_tv_upstairs_input_component2:
   alias: LG TV Input Component2 - Upstairs
   sequence:
@@ -749,9 +704,6 @@ lg_tv_upstairs_input_component2:
         command: InputComponent2
   icon: mdi:video-input-component
   mode: single
-
-
-# Select, Return, and Favorite
 lg_tv_upstairs_select:
   alias: LG TV Select - Upstairs
   sequence:
@@ -763,7 +715,6 @@ lg_tv_upstairs_select:
         command: Select
   icon: mdi:cursor-default-click-outline
   mode: single
-
 lg_tv_upstairs_return:
   alias: LG TV Return - Upstairs
   sequence:
@@ -775,7 +726,6 @@ lg_tv_upstairs_return:
         command: Return
   icon: mdi:return
   mode: single
-
 lg_tv_upstairs_favorite:
   alias: LG TV Favorite - Upstairs
   sequence:
@@ -787,8 +737,6 @@ lg_tv_upstairs_favorite:
         command: Favorite
   icon: mdi:star-outline
   mode: single
-
-# List, Sleep, Color Buttons
 lg_tv_upstairs_list:
   alias: LG TV List - Upstairs
   sequence:
@@ -800,7 +748,6 @@ lg_tv_upstairs_list:
         command: List
   icon: mdi:format-list-bulleted
   mode: single
-
 lg_tv_upstairs_sleep:
   alias: LG TV Sleep - Upstairs
   sequence:
@@ -812,7 +759,6 @@ lg_tv_upstairs_sleep:
         command: Sleep
   icon: mdi:sleep
   mode: single
-
 lg_tv_upstairs_green_button:
   alias: LG TV Green Button - Upstairs
   sequence:
@@ -824,7 +770,6 @@ lg_tv_upstairs_green_button:
         command: Green
   icon: mdi:circle-medium
   mode: single
-
 lg_tv_upstairs_red_button:
   alias: LG TV Red Button - Upstairs
   sequence:
@@ -836,7 +781,6 @@ lg_tv_upstairs_red_button:
         command: Red
   icon: mdi:circle-medium
   mode: single
-
 lg_tv_upstairs_blue_button:
   alias: LG TV Blue Button - Upstairs
   sequence:
@@ -848,7 +792,6 @@ lg_tv_upstairs_blue_button:
         command: Blue
   icon: mdi:circle-medium
   mode: single
-
 lg_tv_upstairs_yellow_button:
   alias: LG TV Yellow Button - Upstairs
   sequence:
@@ -860,8 +803,6 @@ lg_tv_upstairs_yellow_button:
         command: Yellow
   icon: mdi:circle-medium
   mode: single
-
-# Page Up/Down, Exit, Aspect Ratio, AV Mode
 lg_tv_upstairs_page_down:
   alias: LG TV Page Down - Upstairs
   sequence:
@@ -873,7 +814,6 @@ lg_tv_upstairs_page_down:
         command: PageDown
   icon: mdi:page-next-outline
   mode: single
-
 lg_tv_upstairs_page_up:
   alias: LG TV Page Up - Upstairs
   sequence:
@@ -885,7 +825,6 @@ lg_tv_upstairs_page_up:
         command: PageUp
   icon: mdi:page-previous-outline
   mode: single
-
 lg_tv_upstairs_aspect_ratio:
   alias: LG TV Aspect Ratio - Upstairs
   sequence:
@@ -897,7 +836,6 @@ lg_tv_upstairs_aspect_ratio:
         command: Aspect
   icon: mdi:aspect-ratio
   mode: single
-
 lg_tv_upstairs_av_mode:
   alias: LG TV AV Mode - Upstairs
   sequence:
@@ -909,8 +847,6 @@ lg_tv_upstairs_av_mode:
         command: AvMode
   icon: mdi:television-classic
   mode: single
-
-# Energy Saving, Freeze, Input Commands
 lg_tv_upstairs_energy_saving:
   alias: LG TV Energy Saving - Upstairs
   sequence:
@@ -922,7 +858,6 @@ lg_tv_upstairs_energy_saving:
         command: EnergySaving
   icon: mdi:power-sleep
   mode: single
-
 lg_tv_upstairs_freeze:
   alias: LG TV Freeze - Upstairs
   sequence:
@@ -934,7 +869,6 @@ lg_tv_upstairs_freeze:
         command: Freeze
   icon: mdi:snowflake
   mode: single
-
 lg_tv_upstairs_input_rgb_pc:
   alias: LG TV Input RGB-PC - Upstairs
   sequence:
@@ -946,7 +880,6 @@ lg_tv_upstairs_input_rgb_pc:
       command: InputRgb-Pc
   icon: mdi:monitor
   mode: single
-
 lg_tv_upstairs_input_tv:
   alias: LG TV Input TV - Upstairs
   sequence:
@@ -958,7 +891,6 @@ lg_tv_upstairs_input_tv:
       command: InputTv
   icon: mdi:television
   mode: single
-
 lg_tv_upstairs_q_menu:
   alias: LG TV Q.Menu - Upstairs
   sequence:
@@ -970,7 +902,6 @@ lg_tv_upstairs_q_menu:
       command: Q.Menu
   icon: mdi:menu
   mode: single
-
 lg_tv_upstairs_ratio_16_9:
   alias: LG TV Ratio 16:9 - Upstairs
   sequence:
@@ -982,7 +913,6 @@ lg_tv_upstairs_ratio_16_9:
       command: Ratio16:9
   icon: mdi:aspect-ratio
   mode: single
-
 lg_tv_upstairs_ratio_4_3:
   alias: LG TV Ratio 4:3 - Upstairs
   sequence:
@@ -994,7 +924,6 @@ lg_tv_upstairs_ratio_4_3:
       command: Ratio4:3
   icon: mdi:aspect-ratio
   mode: single
-
 lg_tv_upstairs_ratio_zoom:
   alias: LG TV Ratio Zoom - Upstairs
   sequence:
@@ -1006,7 +935,6 @@ lg_tv_upstairs_ratio_zoom:
       command: RatioZoom
   icon: mdi:magnify
   mode: single
-
 lg_tv_upstairs_simp_link:
   alias: LG TV SimpLink - Upstairs
   sequence:
@@ -1018,7 +946,6 @@ lg_tv_upstairs_simp_link:
       command: SimpLink
   icon: mdi:link-variant
   mode: single
-
 lg_tv_upstairs_tv_video:
   alias: LG TV TV Video - Upstairs
   sequence:
@@ -1030,12 +957,10 @@ lg_tv_upstairs_tv_video:
       command: TvVideo
   icon: mdi:video
   mode: single
-
-"1709327333198":
+'1709327333198':
   alias: Set Frog Sound Playback for the Day
   sequence:
-    service:
-      input_boolean.turn_{{ 'on' if (range(1, 8) | random) == now().isoweekday()
+    service: input_boolean.turn_{{ 'on' if (range(1, 8) | random) == now().isoweekday()
       else 'off' }}
     data: {}
     entity_id: input_boolean.frog_sounds_today
