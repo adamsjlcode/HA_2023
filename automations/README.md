@@ -210,7 +210,7 @@ This automation turns on lights in various areas when motion is detected, with r
 This automation adjusts the no-motion and motion delay timers for various rooms when the time of day is set to "Evening".
 
 - **Triggers**: The `input_select.time_of_day` changes to "Evening".
-- **Actions**: 
+- **Actions**:
   - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
 - **Conditions**: None.
 
@@ -220,7 +220,47 @@ This automation adjusts the no-motion and motion delay timers for various rooms 
 This automation adjusts the no-motion and motion delay timers for various rooms when the time of day is set to "Afternoon".
 
 - **Triggers**: The `input_select.time_of_day` changes to "Afternoon".
-- **Actions**: 
+- **Actions**:
+  - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
+- **Conditions**: None.
+
+**Setup Morning Lights**
+
+**Description**:  
+This automation adjusts the no-motion and motion delay timers for various rooms when the time of day is set to "Morning".
+
+- **Triggers**: The `input_select.time_of_day` changes to "Afternoon".
+- **Actions**:
+  - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
+- **Conditions**: None.
+
+**Setup Afternoon Lights**
+
+**Description**:  
+This automation adjusts the no-motion and motion delay timers for various rooms when the time of day is set to "Afternoon".
+
+- **Triggers**: The `input_select.time_of_day` changes to "Afternoon".
+- **Actions**:
+  - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
+- **Conditions**: None.
+
+**Setup Morning Lights**
+
+**Description**:  
+This automation adjusts the no-motion and motion delay timers for various rooms when the time of day is set to "Morning".
+
+- **Triggers**: The `input_select.time_of_day` changes to "Morning".
+- **Actions**:
+  - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
+- **Conditions**: None.
+- 
+**Setup Late Night Lights**
+
+**Description**:  
+This automation adjusts the no-motion and motion delay timers for various rooms when the time of day is set to "Late Night".
+
+- **Triggers**: The `input_select.time_of_day` changes to "Late Night".
+- **Actions**:
   - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
 - **Conditions**: None.
 
