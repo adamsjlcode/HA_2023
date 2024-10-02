@@ -104,7 +104,22 @@ This automation turns off the specified downstairs lights when the user short pr
 - **Triggers**: Short press on the off button for the specified downstairs Hue dimmer switch.
 - **Actions**: Turns off specified downstairs lights with a smooth 5-second transition.
 - **Conditions**: None.
-  !
+
+Here’s the breakdown for your **Toggle Sleep Sensor** automation:
+
+---
+
+**Toggle Sleep Sensor (Long Press)**
+
+**Description**:  
+This automation toggles the `input_boolean.someone_sleeping` when the user long presses the middle button (subtype 3) on the bedroom Hue dimmer switch.
+
+- **Triggers**: Long press on the middle button (subtype 3) of the specified Hue dimmer switch.
+- **Actions**: Toggles the `input_boolean.someone_sleeping`.
+- **Conditions**: None.
+
+---
+
 
 ## How to Contribute
 
