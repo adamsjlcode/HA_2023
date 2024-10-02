@@ -356,15 +356,15 @@
 # Update Time of Day
 #
 # Description:
-# This automation automatically updates the 'time_of_day' input select based on 
-# the current time and predefined start times for morning, afternoon, evening, 
+# This automation automatically updates the 'time_of_day' input select based on
+# the current time and predefined start times for morning, afternoon, evening,
 # and late night.
 #
 # Triggers:
 # - Time triggers based on the start times for each time of day or at midnight.
 #
 # Actions:
-# - Updates the 'time_of_day' input select based on the current time and the 
+# - Updates the 'time_of_day' input select based on the current time and the
 #   specified start times.
 #
 # Conditions:
@@ -474,7 +474,7 @@
 # Play Clock Sound on the Hour
 #
 # Description:
-# This automation plays a clock sound every hour when the sun is up and 
+# This automation plays a clock sound every hour when the sun is up and
 # frog sounds are not playing.
 #
 # Triggers:
@@ -510,3 +510,124 @@
         media_content_id: media-source://media_source/local/antique-wood-chime-bell-ring.wav
         media_content_type: music
   mode: single
+
+# -----------------------------------------------------
+# Random Frog Chime During Daylight Hours
+#
+# Description:
+# This automation plays a random frog call every hour during daylight hours on
+# randomly selected days.
+#
+# Triggers:
+# - Time pattern triggers every hour.
+#
+# Actions:
+# - Randomly selects and plays a frog sound on the bedroom and kitchen speakers.
+#
+# Conditions:
+# - Only runs during daylight hours when frog sounds are enabled for the day.
+# -----------------------------------------------------
+
+- id: "1709228035694"
+  alias: Random Frog Chime During Daylight Hours
+  description:
+    Plays a random frog call every hour during daylight hours on randomly
+    selected days.
+  trigger:
+    - platform: time_pattern
+      hours: "01"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: above_horizon
+    - condition: state
+      entity_id: input_boolean.frog_sounds_today
+      state: "on"
+      enabled: true
+  action:
+    - variables:
+        chosen_frog:
+          "{{ ['https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/barking-treefrog-chorus.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/bird-voiced-treefrog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/bronze-frog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/carpenter-frog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2020/11/southern-gray-treefrog-mating-call.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2020/11/southern-gray-treefrog-rain-call.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/narrow-mouthed-toad.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/florida-gopher-frog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/green-treefrog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/green-treefrog-chorus.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/green-treefrog-rain-call.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/little-grass-frog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/little-grass-frog-rhythmic.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/oak-toad-breeding-call.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/ornate-chorus-frog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/pig-frog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/pinewoods-treefrog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/pinewoods-treefrog-chorus.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/florida-chorus-frog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/southern-cricket-frog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/southern-cricket-frog-chorus.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/southern-leopard-frog-chorus.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/southern-toad-breeding-chorus.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/spring-peeper.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2020/11/spring-peeper-chorus-mating-call.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/squirrel-treefrog.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/squirrel-treefrog-chorus.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/group-chorus-spring.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/group-chorus-summer-july.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/group-chorus-summer-august.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2018/11/group-chorus-winter.mp3',
+          'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/108/2020/10/Cuban-treefrog-calls_03.mp3'
+          ][(range(0, 32) | random)] }}
+
+          "
+    - service: media_player.volume_set
+      data:
+        volume_level: 1
+      target:
+        entity_id: media_player.bedroom_speaker
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.bedroom_speaker
+        media_content_id: "{{ chosen_frog }}"
+        media_content_type: music
+    - service: media_player.volume_set
+      data:
+        volume_level: 1
+      target:
+        entity_id: media_player.kitchen_speaker
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.kitchen_speaker
+        media_content_id: "{{ chosen_frog }}"
+        media_content_type: music
+  mode: single
+
+# -----------------------------------------------------
+# Determine Daily Frog Sound Playback
+#
+# Description:
+# This automation runs just after midnight each day to randomly determine
+# whether frog sounds will play for that day.
+#
+# Triggers:
+# - Runs daily at 00:01 AM.
+#
+# Actions:
+# - Executes a script to randomly decide if frog sounds will play that day.
+#
+# Conditions:
+# - None.
+# -----------------------------------------------------
+- id: "1709326067269"
+  alias: Determine Daily Frog Sound Playback
+  description:
+    This automation will run the script just after midnight each day to
+    randomly determine if the frog sounds should play that day.
+  trigger:
+    - platform: time
+      at: 00:01:00
+  action:
+    - service: script.1709327333198
+      data: {}

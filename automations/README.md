@@ -318,6 +318,27 @@ This automation plays a clock sound every hour when the sun is up and frog sound
   - Plays a clock sound on the home media player.
 - **Conditions**: Only runs when the sun is above the horizon and frog sounds are not enabled.
 
+**Random Frog Chime During Daylight Hours**
+
+**Description**:  
+This automation plays a random frog call every hour during daylight hours on randomly selected days.
+
+- **Triggers**: Time pattern triggers every hour.
+- **Actions**: 
+  - Randomly selects and plays a frog sound on the bedroom and kitchen speakers.
+- **Conditions**: Only runs during daylight hours when frog sounds are enabled for the day.
+
+---
+
+**Determine Daily Frog Sound Playback**
+
+**Description**:  
+This automation runs just after midnight each day to randomly determine whether frog sounds will play for that day.
+
+- **Triggers**: Runs daily at 00:01 AM.
+- **Actions**: 
+  - Executes a script to randomly decide if frog sounds will play that day.
+- **Conditions**: None.
 
 ## How to Contribute
 
