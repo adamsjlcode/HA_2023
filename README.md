@@ -214,8 +214,3 @@ Feedback and suggestions are always welcome. Feel free to open an issue on GitHu
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-```
-
-This version retains all the original content and adds sections for automations, integrations, and hardware as discussed earlier. You can now upload this as your new `README.md` file.
-```
