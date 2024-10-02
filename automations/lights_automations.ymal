@@ -344,3 +344,52 @@
       target:
         entity_id: input_boolean.normal_lights
   mode: single
+# -----------------------------------------------------
+# Set Lights to Selected Temperature
+#
+# Description:
+# This automation sets all lights to the color temperature selected in the 
+# input_select.light_kelvin dropdown. It also disables color mode, theme mode,
+# and sync music lights, and enables normal lights mode.
+#
+# Triggers:
+# - A change in the selected temperature from the input_select.light_kelvin dropdown.
+#
+# Actions:
+# - Turns off color mode, theme mode, and sync music lights.
+# - Enables normal lights mode.
+# - Sets all lights to the selected color temperature.
+#
+# Conditions:
+# - None.
+# -----------------------------------------------------
+
+- id: "1711150276270"
+  alias: Set Lights to Selected Temperature
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_select.light_kelvin
+  condition: []
+  action:
+    - service: input_boolean.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+          - input_boolean.enable_color_mode
+          - input_boolean.theme_mode
+          - input_boolean.sync_music_lights
+    - service: input_boolean.turn_on
+      data: {}
+      target:
+        entity_id: input_boolean.normal_lights
+    - service: light.turn_on
+      target:
+        entity_id: light.all_lights
+      data:
+        kelvin: "{{ light_kelvin }}"
+  variables:
+    light_kelvin: "{{ states('input_select.light_kelvin') }}"
+  mode: parallel

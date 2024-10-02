@@ -152,6 +152,18 @@ This automation turns on the normal lights input boolean when the theme mode is 
   - Turns on the normal lights input boolean.
 - **Conditions**: None.
 
+**Set Lights to Selected Temperature**
+
+**Description**:  
+This automation sets all lights to the color temperature selected in the `input_select.light_kelvin` dropdown. It disables color mode, theme mode, and sync music lights, and enables normal lights mode.
+
+- **Triggers**: A change in the selected temperature from the `input_select.light_kelvin` dropdown.
+- **Actions**: 
+  - Turns off color mode, theme mode, and sync music lights.
+  - Enables normal lights mode.
+  - Sets all lights to the selected color temperature.
+- **Conditions**: None.
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:
