@@ -268,3 +268,40 @@
       target:
         device_id: 985b699e0a29cb7a1bcc100865344644
   mode: single
+
+# -----------------------------------------------------
+# Normal Light On
+#
+# Description:
+# This automation turns off the color mode, sync music lights, and theme mode
+# when the normal lights input boolean is switched on.
+#
+# Triggers:
+# - The input_boolean.normal_lights changes from "off" to "on".
+#
+# Actions:
+# - Turns off color mode, sync music lights, and theme mode input booleans.
+#
+# Conditions:
+# - None.
+# -----------------------------------------------------
+- id: "1711417104881"
+  alias: Normal Light On
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.normal_lights
+      to: "on"
+      from: "off"
+  condition: []
+  action:
+    - service: input_boolean.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+          - input_boolean.enable_color_mode
+          - input_boolean.sync_music_lights
+          - input_boolean.theme_mode
+  mode: single

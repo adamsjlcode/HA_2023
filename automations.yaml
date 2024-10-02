@@ -943,26 +943,7 @@
       target:
         entity_id: input_number.media_room_motion_delay
   mode: single
-- id: "1711417104881"
-  alias: Normal Light On
-  description: ""
-  trigger:
-    - platform: state
-      entity_id:
-        - input_boolean.normal_lights
-      to: "on"
-      from: "off"
-  condition: []
-  action:
-    - service: input_boolean.turn_off
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-          - input_boolean.enable_color_mode
-          - input_boolean.sync_music_lights
-          - input_boolean.theme_mode
-  mode: single
+
 - id: "1711479848694"
   alias: Weed Counter
   description: Long Press Third Button
@@ -997,7 +978,7 @@
 
         '
   mode: single
-  
+
 - id: "1726026800205"
   alias: Watch Pirate Software Live on LGTV
   trigger:

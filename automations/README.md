@@ -132,6 +132,17 @@ This automation toggles the outdoor light when the back door is opened after sun
   - Toggles the outdoor light off after the delay.
 - **Conditions**: Only runs after sunset.
 
+**Normal Light On**
+
+**Description**:  
+This automation turns off the color mode, sync music lights, and theme mode when the normal lights input boolean is switched on.
+
+- **Triggers**: The `input_boolean.normal_lights` changes from "off" to "on".
+- **Actions**:
+  - Turns off color mode, sync music lights, and theme mode input booleans.
+- **Conditions**: None.
+-
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:
