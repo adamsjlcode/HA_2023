@@ -119,15 +119,70 @@ This configuration also includes automations that simplify daily routines:
 
 This configuration includes the following integrations:
 
-- **Philips Hue**: Smart lighting control for automations based on time of day and motion detection.
-- **TP-Link Kasa**: Control of smart plugs and switches for automated energy management.
-- **Plex Media Server**: Automates lighting based on media playback.
-- **YouTube Sensor**: Detects live YouTube streams from selected channels to trigger automations.
-- **Google Assistant**: Voice control for managing devices and automations.
-- **Zigbee2MQTT**: Manages Zigbee-based smart devices.
-- **Frigate NVR**: Provides real-time security monitoring using motion detection from cameras.
-- **Mobile App**: Allows for mobile tracking and location-based automations.
-- **MQTT**: Integrates various IoT devices using MQTT protocol.
+- AccuWeather: Provides weather data for automations based on weather conditions.
+- Android Debug Bridge: Failed setup, will retry.
+- Anniversaries: Tracks and notifies about important dates and anniversaries.
+- Blitzortung: Lightning detection integration.
+- BodyMiScale: For monitoring body metrics.
+- Browser Mod: Extends Home Assistant's frontend by enabling control of the browser.
+- ColorExtractor: Extracts prominent colors from images for use in Home Assistant.
+- Custom Panel: Allows custom UI panels in Home Assistant.
+- Dwains Dashboard: Custom Home Assistant dashboard interface.
+- Favicon: Custom favicon for your Home Assistant instance.
+- FontAwesome: Integration for using FontAwesome icons.
+- Frigate: NVR solution with real-time object detection.
+- GeoNet NZ Quakes: Earthquake detection from GeoNet New Zealand.
+- GeoNet NZ Volcano: Volcano monitoring integration.
+- Google Cast: Control Chromecast devices.
+- Google Translate Text-to-Speech: Provides text-to-speech capabilities.
+- HACS: Home Assistant Community Store for custom components.
+- Harmony AC: Control for Harmony AC.
+- Home Assistant Supervisor: Manages the Home Assistant instance.
+- IQVIA: Provides healthcare-related data.
+- LG WebOS Smart TV: Control LG WebOS TV.
+- Local To-do: Local to-do list management.
+- Logitech Harmony Hub: Integration for controlling devices via Logitech Harmony Hub.
+- Media Extractor: Extracts media metadata.
+- Meteorologisk Institutt (Met.no): Weather service integration.
+- Mobile App: Connect mobile devices for geolocation and notifications.
+- Moon: Provides moon phase data.
+- MQTT: Communicates with IoT devices over the MQTT protocol.
+- NETGEAR: Network monitoring and control for NETGEAR devices.
+- NWS Alerts: National Weather Service alerts.
+- NOAA Aurora Sensor: Aurora borealis sensor from NOAA.
+- NPM Switches: Control npm packages as switches.
+- OpenUV: Provides UV index data.
+- Oral-B: Monitor Oral-B smart toothbrush.
+- Passive BLE Monitor: Monitors Bluetooth Low Energy devices.
+- Philips Hue: Smart lighting control.
+- Plex Media Server: Automates media control with Plex.
+- Plex Recently Added: Triggers actions based on newly added media in Plex.
+- Powercalc: Calculate power consumption for devices.
+- Radio Browser: Browse and stream radio stations.
+- Reolink IP NVR/Camera: Surveillance camera control and monitoring.
+- RESTful: Integration for making RESTful API calls.
+- Season: Track the current season and use it in automations.
+- Shopping List: Manage a shopping list.
+- SmartThings: Integrate Samsung SmartThings for device control.
+- Sonarr: Media library management.
+- Spook: Mystery integration.
+- Steam Wishlist: Monitor and track Steam wishlist items.
+- System Monitor: Monitor system performance and statistics.
+- Tautulli: Failed setup, will retry.
+- Team Tracker: Track sports teams and their schedules.
+- Thread: Communication protocol for IoT devices.
+- TP-Link Smart Home: Smart device control for TP-Link devices.
+- U.S. Geological Survey (USGS) Earthquake Hazards: Earthquake detection and data.
+- Universal Media Player: Unified media control.
+- Variables+History: Stores and tracks custom variables with history.
+- VLC Media Player via Telnet: Control VLC media player remotely.
+- Weatheralerts: Provides weather alerts for your location.
+- World Air Quality Index (WAQI): Air quality monitoring data.
+- Worldclock: Provides world time data.
+- Xbox: Integration for Xbox console.
+- YouTube Sensor: Tracks live YouTube events.
+- YouTube Media Player: YouTube media player control.
+- Zodiac: Provides zodiac sign data.
 
 ## Hardware
 
