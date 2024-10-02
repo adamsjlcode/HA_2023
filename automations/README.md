@@ -1,6 +1,4 @@
 
----
-
 # Home Assistant Automations
 
 This folder contains various automations used in my Home Assistant setup. Each automation is designed to streamline and automate different aspects of the home environment, from lighting to media control.
