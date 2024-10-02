@@ -204,6 +204,16 @@ This automation turns on lights in various areas when motion is detected, with r
   - Turns on lights in the corresponding room with brightness and color based on the lighting mode and current settings.
 - **Conditions**: Only triggers if both `input_boolean.sync_music_lights` and `input_boolean.theme_mode` are off.
 
+**Setup Evening Lights**
+
+**Description**:  
+This automation adjusts the no-motion and motion delay timers for various rooms when the time of day is set to "Evening".
+
+- **Triggers**: The `input_select.time_of_day` changes to "Evening".
+- **Actions**: 
+  - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
+- **Conditions**: None.
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:
