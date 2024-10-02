@@ -1,3 +1,5 @@
+# -----------------------------------------------------
+# Turn Off Lights on No Motion
 # Description:
 # This automation turns off lights in various areas of the home when no motion
 # is detected for a specified amount of time, with different delays for each
@@ -20,6 +22,7 @@
 # Dependencies:
 # - Input_number entities control the delay for turning off the lights in each room.
 # - Lights in each area are turned off according to the trigger sensor (motion or door contact).
+# -----------------------------------------------------
 
 - id: "1710545712946"
   alias: Turn Off Lights on No Motion
@@ -134,7 +137,9 @@
                 - light.laundry_room_overhead_2
   mode: parallel
   max: 10
-
+# -----------------------------------------------------
+# Adjust Brightness of On Lights Except Screens
+#
 # Description:
 # This automation adjusts the brightness of all lights that are currently on,
 # except for screen-related lights, whenever the input_number for brightness
@@ -155,6 +160,7 @@
 # Dependencies:
 # - Requires the input_number.home_light_brightness entity to adjust the brightness.
 # - Works with any lights whose entity IDs do not include "_screen".
+# -----------------------------------------------------
 
 - alias: Adjust Brightness of On Lights Except Screens
   description:
@@ -305,12 +311,12 @@
           - input_boolean.sync_music_lights
           - input_boolean.theme_mode
   mode: single
-  
+
 # -----------------------------------------------------
 # Theme is off
 #
 # Description:
-# This automation turns on the normal lights input boolean when the theme mode 
+# This automation turns on the normal lights input boolean when the theme mode
 # is turned off.
 #
 # Triggers:
