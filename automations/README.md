@@ -108,18 +108,30 @@ This automation sends a TTS alert through selected speakers when the front or ba
 - **Triggers**: The back door or front door contact sensor changes to "on" (opened).
 - **Actions**: Sets volume and sends a TTS message to both speakers indicating which door was opened.
 - **Conditions**: None.
-- 
-**Set Light to Selected Color**
+- **Set Light to Selected Color**
 
 **Description**:  
 This automation sets all lights to the color selected in the `input_select.light_color` dropdown. It disables normal lighting and sync music lighting and enables color mode.
 
 - **Triggers**: A change in the selected color from the `input_select.light_color` dropdown.
-- **Actions**: 
+- **Actions**:
   - Turns off the normal lights and sync music lighting input booleans.
   - Enables color mode.
   - Sets all lights to the color selected in `input_select.light_color`.
 - **Conditions**: None.
+
+**Outdoor Night Light**
+
+**Description**:  
+This automation toggles the outdoor light when the back door is opened after sunset. The light stays on for 15 minutes before turning off again.
+
+- **Triggers**: The back door contact sensor changes from "off" to "on" (opened).
+- **Actions**:
+  - Toggles the outdoor light when the back door is opened.
+  - Delays for 15 minutes.
+  - Toggles the outdoor light off after the delay.
+- **Conditions**: Only runs after sunset.
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:

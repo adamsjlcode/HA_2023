@@ -220,3 +220,51 @@
       data:
         color_name: "{{ states('input_select.light_color') }}"
   mode: parallel
+
+# -----------------------------------------------------
+# Outdoor Night Light
+#
+# Description:
+# This automation toggles the outdoor light when the back door is opened after
+# sunset. The light stays on for 15 minutes before turning off again.
+#
+# Triggers:
+# - The back door contact sensor changes from "off" to "on" (opened).
+#
+# Actions:
+# - Toggles the outdoor light when the back door is opened.
+# - Delays for 15 minutes.
+# - Toggles the outdoor light off after the delay.
+#
+# Conditions:
+# - Only runs after sunset.
+# -----------------------------------------------------
+
+- id: "1721875125353"
+  alias: Outdoor Night Light
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.back_door_contact
+      from: "off"
+      to: "on"
+  condition:
+    - condition: sun
+      after: sunset
+  action:
+    - service: switch.toggle
+      data: {}
+      target:
+        device_id: 985b699e0a29cb7a1bcc100865344644
+    - delay:
+        hours: 0
+        minutes: 15
+        seconds: 0
+        milliseconds: 0
+    - service: switch.toggle
+      metadata: {}
+      data: {}
+      target:
+        device_id: 985b699e0a29cb7a1bcc100865344644
+  mode: single
