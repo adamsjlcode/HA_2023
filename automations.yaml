@@ -1,1110 +1,1104 @@
-- id: '1699732340926'
+- id: "1699732340926"
   alias: Frigidare Power Toggle
-  description: ''
+  description: ""
   trigger:
-  - platform: state
-    entity_id:
-    - input_boolean.frigidaire_ac_button
+    - platform: state
+      entity_id:
+        - input_boolean.frigidaire_ac_button
   condition: []
   action:
-  - service: script.frigidaire_climate_control_upstairs_power_toggle
-    data: {}
+    - service: script.frigidaire_climate_control_upstairs_power_toggle
+      data: {}
   mode: single
-- id: '1699732652226'
+- id: "1699732652226"
   alias: LG AC Power Toggle
-  description: ''
+  description: ""
   trigger:
-  - platform: state
-    entity_id:
-    - input_boolean.lg_ac_button
+    - platform: state
+      entity_id:
+        - input_boolean.lg_ac_button
   condition: []
   action:
-  - service: script.lg_climate_control_upstairs_power_toggle
-    data: {}
+    - service: script.lg_climate_control_upstairs_power_toggle
+      data: {}
   mode: single
-- id: '1707603165027'
+- id: "1707603165027"
   alias: Play Clock Sound on the Half-Hour
   description: Plays a clock sound every half-hour when the sun is up
   trigger:
-  - platform: time_pattern
-    minutes: '30'
+    - platform: time_pattern
+      minutes: "30"
   condition:
-  - condition: state
-    entity_id: sun.sun
-    state: above_horizon
+    - condition: state
+      entity_id: sun.sun
+      state: above_horizon
   action:
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.home
-    data:
-      media_content_id: media-source://media_source/local/antique-wood-chime-bell-ring.wav
-      media_content_type: music
-- id: '1709497089270'
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.home
+      data:
+        media_content_id: media-source://media_source/local/antique-wood-chime-bell-ring.wav
+        media_content_type: music
+- id: "1709497089270"
   alias: Play Clock Sound on the Hour
-  description: Plays a clock sound every hour when the sun is up and not playing frog
+  description:
+    Plays a clock sound every hour when the sun is up and not playing frog
     sounds
   trigger:
-  - platform: time_pattern
-    minutes: '0'
+    - platform: time_pattern
+      minutes: "0"
   condition:
-  - condition: state
-    entity_id: sun.sun
-    state: above_horizon
-  - condition: state
-    entity_id: input_boolean.frog_sounds_today
-    state: 'off'
+    - condition: state
+      entity_id: sun.sun
+      state: above_horizon
+    - condition: state
+      entity_id: input_boolean.frog_sounds_today
+      state: "off"
   action:
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.home
-    data:
-      media_content_id: media-source://media_source/local/antique-wood-chime-bell-ring.wav
-      media_content_type: music
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.home
+      data:
+        media_content_id: media-source://media_source/local/antique-wood-chime-bell-ring.wav
+        media_content_type: music
   mode: single
-- id: '1710103968772'
+- id: "1710103968772"
   alias: Sync Sengled with Hue - Dynamic Palette
   description: Mimic Hue dynamic scene on Sengled lights
   trigger:
-  - platform: template
-    value_template: '{{ state_attr(''light.home'', ''dynamics'') }}'
-    enabled: true
+    - platform: template
+      value_template: "{{ state_attr('light.home', 'dynamics') }}"
+      enabled: true
   action:
-  - service: light.turn_on
-    data:
-      entity_id:
-      - light.bed_light_strip_1
-      - light.laundry_room_overhead_1
-      brightness: '{{ state_attr(''light.media_room_overhead_light'', ''brightness'')}}'
-      rgb_color: '{{ state_attr(''light.media_room_overhead_light'', ''rgb_color'')
-        }}'
-  - service: light.turn_on
-    data:
-      entity_id:
-      - light.stairs_light_strip
-      - light.kitchen_overhead_1
-      - light.living_room_light
-      brightness: '{{ state_attr(''light.stairs_overhead_light'', ''brightness'')
-        }}'
-      rgb_color: '{{ state_attr(''light.stairs_overhead_light'', ''rgb_color'') }}'
-  - service: light.turn_on
-    data:
-      entity_id:
-      - light.kitchen_overhead_2
-      - light.laundry_room_overhead_2
-      brightness: '{{ state_attr(''light.bedroom_overhead_light'', ''brightness'')
-        }}'
-      rgb_color: '{{ state_attr(''light.bedroom_overhead_light'', ''rgb_color'') }}'
-  - service: light.turn_on
-    data:
-      entity_id:
-      - light.dining_room_light
-      - light.bed_light_strip_2
-      brightness: '{{ state_attr(''light.floorlamp'', ''brightness'') }}'
-      rgb_color: '{{ state_attr(''light.floorlamp'', ''rgb_color'') }}'
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.bed_light_strip_1
+          - light.laundry_room_overhead_1
+        brightness: "{{ state_attr('light.media_room_overhead_light', 'brightness')}}"
+        rgb_color:
+          "{{ state_attr('light.media_room_overhead_light', 'rgb_color')
+          }}"
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.stairs_light_strip
+          - light.kitchen_overhead_1
+          - light.living_room_light
+        brightness: "{{ state_attr('light.stairs_overhead_light', 'brightness')
+          }}"
+        rgb_color: "{{ state_attr('light.stairs_overhead_light', 'rgb_color') }}"
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.kitchen_overhead_2
+          - light.laundry_room_overhead_2
+        brightness: "{{ state_attr('light.bedroom_overhead_light', 'brightness')
+          }}"
+        rgb_color: "{{ state_attr('light.bedroom_overhead_light', 'rgb_color') }}"
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.dining_room_light
+          - light.bed_light_strip_2
+        brightness: "{{ state_attr('light.floorlamp', 'brightness') }}"
+        rgb_color: "{{ state_attr('light.floorlamp', 'rgb_color') }}"
   mode: single
   max: 10
-- id: '1710456631644'
+- id: "1710456631644"
   alias: Persistent Theme Lights
-  description: ''
+  description: ""
   trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.hue_groups_dynamic_scening
-    from: 'off'
-    to: 'on'
-  condition: []
-  action:
-  - service: input_boolean.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: input_boolean.theme_mode
-  mode: single
-- id: '1710456739075'
-  alias: Theme Is Running
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - input_boolean.theme_mode
-    from:
-    to: 'on'
-  condition: []
-  action:
-  - service: input_boolean.turn_off
-    metadata: {}
-    data: {}
-    target:
+    - platform: state
       entity_id:
-      - input_boolean.normal_lights
-      - input_boolean.enable_color_mode
-      - input_boolean.sync_music_lights
-  mode: single
-- id: '1710456822979'
-  alias: Theme is off
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - input_boolean.theme_mode
-    from: 'on'
-    to: 'off'
+        - binary_sensor.hue_groups_dynamic_scening
+      from: "off"
+      to: "on"
   condition: []
   action:
-  - service: input_boolean.turn_on
-    data: {}
-    target:
-      entity_id: input_boolean.normal_lights
+    - service: input_boolean.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: input_boolean.theme_mode
   mode: single
-- id: '1710543988869'
+- id: "1710456739075"
+  alias: Theme Is Running
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.theme_mode
+      from:
+      to: "on"
+  condition: []
+  action:
+    - service: input_boolean.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+          - input_boolean.normal_lights
+          - input_boolean.enable_color_mode
+          - input_boolean.sync_music_lights
+  mode: single
+- id: "1710456822979"
+  alias: Theme is off
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.theme_mode
+      from: "on"
+      to: "off"
+  condition: []
+  action:
+    - service: input_boolean.turn_on
+      data: {}
+      target:
+        entity_id: input_boolean.normal_lights
+  mode: single
+- id: "1710543988869"
   alias: Adjust Indoor Lighting Based on Cloud Coverage
-  description: Dynamically adjusts the indoor light brightness based on cloud coverage
+  description:
+    Dynamically adjusts the indoor light brightness based on cloud coverage
     percentage during the day.
   trigger:
-  - platform: state
-    entity_id: sensor.openweathermap_cloud_coverage
+    - platform: state
+      entity_id: sensor.openweathermap_cloud_coverage
   condition:
-  - condition: state
-    entity_id: sun.sun
-    state: above_horizon
+    - condition: state
+      entity_id: sun.sun
+      state: above_horizon
   action:
-  - service: input_number.set_value
-    target:
-      entity_id: input_number.home_light_brightness
-    data:
-      value: "{% set baseline_brightness = 30 %} {% set max_adjustment = 100 %} {%
-        set cloud_coverage = states('sensor.openweathermap_cloud_coverage') | float(default=0)
-        %}\n{% if cloud_coverage is none %}\n  {% set cloud_coverage = 0 %}\n{% endif
-        %}\n{% set calculated_brightness = baseline_brightness + ((cloud_coverage
-        / 100) * (max_adjustment - baseline_brightness)) %} {% if calculated_brightness
-        > max_adjustment %}\n  {% set calculated_brightness = max_adjustment %}\n{%
-        elif calculated_brightness < 0 %}\n  {% set calculated_brightness = 0 %}\n{%
-        endif %}\n{{ calculated_brightness }}\n"
+    - service: input_number.set_value
+      target:
+        entity_id: input_number.home_light_brightness
+      data:
+        value:
+          "{% set baseline_brightness = 30 %} {% set max_adjustment = 100 %} {%
+          set cloud_coverage = states('sensor.openweathermap_cloud_coverage') | float(default=0)
+          %}\n{% if cloud_coverage is none %}\n  {% set cloud_coverage = 0 %}\n{% endif
+          %}\n{% set calculated_brightness = baseline_brightness + ((cloud_coverage
+          / 100) * (max_adjustment - baseline_brightness)) %} {% if calculated_brightness
+          > max_adjustment %}\n  {% set calculated_brightness = max_adjustment %}\n{%
+          elif calculated_brightness < 0 %}\n  {% set calculated_brightness = 0 %}\n{%
+          endif %}\n{{ calculated_brightness }}\n"
   mode: single
-- id: '1710640274265'
+- id: "1710640274265"
   alias: Upstairs AC Controllor
-  description: ''
+  description: ""
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.bedroom_motion_sensor_temperature
-    above: 75
-    id: above_75
-  - platform: numeric_state
-    entity_id: sensor.bedroom_motion_sensor_temperature
-    below: 70
-    id: below_70
-  - platform: time_pattern
-    hours: /01
+    - platform: numeric_state
+      entity_id: sensor.bedroom_motion_sensor_temperature
+      above: 75
+      id: above_75
+    - platform: numeric_state
+      entity_id: sensor.bedroom_motion_sensor_temperature
+      below: 70
+      id: below_70
+    - platform: time_pattern
+      hours: /01
   condition:
-  - condition: template
-    value_template: '{{ is_state(''input_boolean.frigidaire_ac_button'', ''off'')
-      and is_state(''input_boolean.lg_ac_button'', ''off'') }}'
-    enabled: false
+    - condition: template
+      value_template: "{{ is_state('input_boolean.frigidaire_ac_button', 'off')
+        and is_state('input_boolean.lg_ac_button', 'off') }}"
+      enabled: false
   action:
-  - choose:
-    - conditions:
-      - condition: or
-        conditions:
-        - condition: trigger
-          id:
-          - above_75
-        - condition: numeric_state
-          entity_id: sensor.bedroom_motion_sensor_temperature_measurement
-          above: 75
-      sequence:
-      - service: script.frigidaire_climate_control_upstairs_power_toggle
-        data: {}
-      - delay: 1
-      - service: script.lg_climate_control_upstairs_power_toggle
-        data: {}
-    - conditions:
-      - condition: or
-        conditions:
-        - condition: trigger
-          id:
-          - below_70
-        - condition: numeric_state
-          entity_id: sensor.bedroom_motion_sensor_temperature_measurement
-          below: 70
-      sequence:
-      - service: script.frigidaire_climate_control_upstairs_power_toggle
-        data: {}
-      - delay: 1
-      - service: script.lg_climate_control_upstairs_power_toggle
-        data: {}
+    - choose:
+        - conditions:
+            - condition: or
+              conditions:
+                - condition: trigger
+                  id:
+                    - above_75
+                - condition: numeric_state
+                  entity_id: sensor.bedroom_motion_sensor_temperature_measurement
+                  above: 75
+          sequence:
+            - service: script.frigidaire_climate_control_upstairs_power_toggle
+              data: {}
+            - delay: 1
+            - service: script.lg_climate_control_upstairs_power_toggle
+              data: {}
+        - conditions:
+            - condition: or
+              conditions:
+                - condition: trigger
+                  id:
+                    - below_70
+                - condition: numeric_state
+                  entity_id: sensor.bedroom_motion_sensor_temperature_measurement
+                  below: 70
+          sequence:
+            - service: script.frigidaire_climate_control_upstairs_power_toggle
+              data: {}
+            - delay: 1
+            - service: script.lg_climate_control_upstairs_power_toggle
+              data: {}
   mode: single
-- id: '1710642496243'
+- id: "1710642496243"
   alias: Update Time of Day
-  description: Automatically updates the 'time_of_day' input select based on the current
+  description:
+    Automatically updates the 'time_of_day' input select based on the current
     time and predefined start times.
   trigger:
-  - platform: time
-    at: 00:00:01
-  - platform: time
-    at: input_datetime.morning_start
-  - platform: time
-    at: input_datetime.afternoon_start
-  - platform: time
-    at: input_datetime.evening_start
-  - platform: time
-    at: input_datetime.late_night_start
+    - platform: time
+      at: 00:00:01
+    - platform: time
+      at: input_datetime.morning_start
+    - platform: time
+      at: input_datetime.afternoon_start
+    - platform: time
+      at: input_datetime.evening_start
+    - platform: time
+      at: input_datetime.late_night_start
   condition: []
   action:
-  - choose:
-    - conditions:
-      - condition: template
-        value_template: '{{ now().time() >= strptime(states(''input_datetime.morning_start''),
-          ''%H:%M:%S'').time() and now().time() < strptime(states(''input_datetime.afternoon_start''),
-          ''%H:%M:%S'').time() }}'
-      sequence:
-      - service: input_select.select_option
-        data:
-          entity_id: input_select.time_of_day
-          option: Morning
-    - conditions:
-      - condition: template
-        value_template: '{{ now().time() >= strptime(states(''input_datetime.afternoon_start''),
-          ''%H:%M:%S'').time() and now().time() < strptime(states(''input_datetime.evening_start''),
-          ''%H:%M:%S'').time() }}'
-      sequence:
-      - service: input_select.select_option
-        data:
-          entity_id: input_select.time_of_day
-          option: Afternoon
-    - conditions:
-      - condition: template
-        value_template: '{{ now().time() >= strptime(states(''input_datetime.evening_start''),
-          ''%H:%M:%S'').time() and now().time() < strptime(states(''input_datetime.late_night_start''),
-          ''%H:%M:%S'').time() }}'
-      sequence:
-      - service: input_select.select_option
-        data:
-          entity_id: input_select.time_of_day
-          option: Evening
-    - conditions:
-      - condition: template
-        value_template: '{{ now().time() >= strptime(states(''input_datetime.late_night_start''),
-          ''%H:%M:%S'').time() or now().time() < strptime(states(''input_datetime.morning_start''),
-          ''%H:%M:%S'').time() }}'
-      sequence:
-      - service: input_select.select_option
-        data:
-          entity_id: input_select.time_of_day
-          option: Late Night
+    - choose:
+        - conditions:
+            - condition: template
+              value_template:
+                "{{ now().time() >= strptime(states('input_datetime.morning_start'),
+                '%H:%M:%S').time() and now().time() < strptime(states('input_datetime.afternoon_start'),
+                '%H:%M:%S').time() }}"
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.time_of_day
+                option: Morning
+        - conditions:
+            - condition: template
+              value_template:
+                "{{ now().time() >= strptime(states('input_datetime.afternoon_start'),
+                '%H:%M:%S').time() and now().time() < strptime(states('input_datetime.evening_start'),
+                '%H:%M:%S').time() }}"
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.time_of_day
+                option: Afternoon
+        - conditions:
+            - condition: template
+              value_template:
+                "{{ now().time() >= strptime(states('input_datetime.evening_start'),
+                '%H:%M:%S').time() and now().time() < strptime(states('input_datetime.late_night_start'),
+                '%H:%M:%S').time() }}"
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.time_of_day
+                option: Evening
+        - conditions:
+            - condition: template
+              value_template:
+                "{{ now().time() >= strptime(states('input_datetime.late_night_start'),
+                '%H:%M:%S').time() or now().time() < strptime(states('input_datetime.morning_start'),
+                '%H:%M:%S').time() }}"
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.time_of_day
+                option: Late Night
   mode: single
 
-- id: cc5b7c3fd79a4d5ea054d706af05c445
-  alias: Set Light to Selected Color
-  trigger:
-  - platform: state
-    entity_id: input_select.light_color
-  action:
-  - service: input_boolean.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - input_boolean.normal_lights
-      - input_boolean.sync_music_lights
-      - input_boolean.theme_mode
-  - service: input_boolean.turn_on
-    target:
-      entity_id: input_boolean.enable_color_mode
-    data: {}
-  - service: light.turn_on
-    target:
-      entity_id: light.all_lights
-    data:
-      color_name: '{{ states(''input_select.light_color'') }}'
-  mode: parallel
-- id: '1710639809027'
+- id: "1710639809027"
   alias: Turn On Lights on Motion
-  description: Turns on lights in various areas when no motion is detected, with room-specific
+  description:
+    Turns on lights in various areas when no motion is detected, with room-specific
     delays.
   trigger:
-  - platform: state
-    entity_id: binary_sensor.bedroom_motion_sensor
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.bedroom_motion_delay') | int)
-      }}
-    id: bedroom_motion
-  - platform: state
-    entity_id: binary_sensor.kitchen_motion_sensor
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.kitchen_motion_delay') | int)
-      }}
-    id: kitchen_motion
-  - platform: state
-    entity_id: binary_sensor.media_room_motion_sensor
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.media_room_motion_delay') |
-      int) }}
-    id: media_room_motion
-  - platform: state
-    entity_id: binary_sensor.stair_motion_sensor
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.stairs_motion_delay') | int)
-      }}
-    id: stairs_motion
-  - platform: state
-    entity_id: binary_sensor.front_door_contact
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.downstairs_motion_delay')|
-      int) }}
-    id: front_door_opened
-  - platform: state
-    entity_id: binary_sensor.back_door_contact
-    to: 'on'
-    for: 00:00:{{ '%02d' | format(states('input_number.downstairs_motion_delay')|
-      int) }}
-    id: back_door_opened
+    - platform: state
+      entity_id: binary_sensor.bedroom_motion_sensor
+      to: "on"
+      for:
+        00:00:{{ '%02d' | format(states('input_number.bedroom_motion_delay') | int)
+        }}
+      id: bedroom_motion
+    - platform: state
+      entity_id: binary_sensor.kitchen_motion_sensor
+      to: "on"
+      for:
+        00:00:{{ '%02d' | format(states('input_number.kitchen_motion_delay') | int)
+        }}
+      id: kitchen_motion
+    - platform: state
+      entity_id: binary_sensor.media_room_motion_sensor
+      to: "on"
+      for:
+        00:00:{{ '%02d' | format(states('input_number.media_room_motion_delay') |
+        int) }}
+      id: media_room_motion
+    - platform: state
+      entity_id: binary_sensor.stair_motion_sensor
+      to: "on"
+      for:
+        00:00:{{ '%02d' | format(states('input_number.stairs_motion_delay') | int)
+        }}
+      id: stairs_motion
+    - platform: state
+      entity_id: binary_sensor.front_door_contact
+      to: "on"
+      for:
+        00:00:{{ '%02d' | format(states('input_number.downstairs_motion_delay')|
+        int) }}
+      id: front_door_opened
+    - platform: state
+      entity_id: binary_sensor.back_door_contact
+      to: "on"
+      for:
+        00:00:{{ '%02d' | format(states('input_number.downstairs_motion_delay')|
+        int) }}
+      id: back_door_opened
   condition:
-  - condition: state
-    entity_id: input_boolean.sync_music_lights
-    state: 'off'
-  - condition: state
-    entity_id: input_boolean.theme_mode
-    state: 'off'
+    - condition: state
+      entity_id: input_boolean.sync_music_lights
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.theme_mode
+      state: "off"
   action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: kitchen_motion
-      sequence:
-      - choose:
+    - choose:
         - conditions:
-          - condition: state
-            state: 'on'
-            entity_id: input_boolean.enable_color_mode
+            - condition: trigger
+              id: kitchen_motion
           sequence:
-          - service: light.turn_on
-            entity_id:
-            - light.kitchen_overhead_1
-            - light.kitchen_overhead_2
-            - light.laundry_room_overhead_1
-            - light.laundry_room_overhead_2
-            data:
-              brightness_pct: '{{ light_brightness }}'
-              color_name: '{{ light_color }}'
-        default:
-        - service: light.turn_on
-          entity_id:
-          - light.kitchen_overhead_1
-          - light.kitchen_overhead_2
-          - light.laundry_room_overhead_1
-          - light.laundry_room_overhead_2
-          data:
-            brightness_pct: '{{ light_brightness }}'
-            kelvin: '{{ light_kelvin }}'
-    - conditions:
-      - condition: trigger
-        id: stairs_motion
-      sequence:
-      - choose:
+            - choose:
+                - conditions:
+                    - condition: state
+                      state: "on"
+                      entity_id: input_boolean.enable_color_mode
+                  sequence:
+                    - service: light.turn_on
+                      entity_id:
+                        - light.kitchen_overhead_1
+                        - light.kitchen_overhead_2
+                        - light.laundry_room_overhead_1
+                        - light.laundry_room_overhead_2
+                      data:
+                        brightness_pct: "{{ light_brightness }}"
+                        color_name: "{{ light_color }}"
+              default:
+                - service: light.turn_on
+                  entity_id:
+                    - light.kitchen_overhead_1
+                    - light.kitchen_overhead_2
+                    - light.laundry_room_overhead_1
+                    - light.laundry_room_overhead_2
+                  data:
+                    brightness_pct: "{{ light_brightness }}"
+                    kelvin: "{{ light_kelvin }}"
         - conditions:
-          - condition: state
-            state: 'on'
-            entity_id: input_boolean.enable_color_mode
+            - condition: trigger
+              id: stairs_motion
           sequence:
-          - service: light.turn_ON
-            entity_id:
-            - light.stairs_overhead_light
-            - light.stairs_light_strip
-            data:
-              brightness_pct: '{{ light_brightness }}'
-              color_name: '{{ light_color }}'
-        default:
-        - service: light.turn_ON
-          entity_id:
-          - light.stairs_overhead_light
-          - light.stairs_light_strip
-          data:
-            brightness_pct: '{{ light_brightness }}'
-            kelvin: '{{ light_kelvin }}'
-    - conditions:
-      - condition: trigger
-        id: bedroom_motion
-      sequence:
-      - choose:
+            - choose:
+                - conditions:
+                    - condition: state
+                      state: "on"
+                      entity_id: input_boolean.enable_color_mode
+                  sequence:
+                    - service: light.turn_ON
+                      entity_id:
+                        - light.stairs_overhead_light
+                        - light.stairs_light_strip
+                      data:
+                        brightness_pct: "{{ light_brightness }}"
+                        color_name: "{{ light_color }}"
+              default:
+                - service: light.turn_ON
+                  entity_id:
+                    - light.stairs_overhead_light
+                    - light.stairs_light_strip
+                  data:
+                    brightness_pct: "{{ light_brightness }}"
+                    kelvin: "{{ light_kelvin }}"
         - conditions:
-          - condition: state
-            entity_id: input_boolean.someone_sleeping
-            state: 'on'
+            - condition: trigger
+              id: bedroom_motion
           sequence:
-          - choose:
-            - conditions:
-              - condition: state
-                state: 'on'
-                entity_id: input_boolean.enable_color_mode
-              sequence:
-              - service: light.turn_on
-                entity_id:
-                - light.bed_light_strip_1
-                - light.bed_light_strip_2
-                data:
-                  color_name: '{{ light_color }}'
-                  brightness_pct: 10
-            default:
-            - service: light.turn_on
-              entity_id:
-              - light.bed_light_strip_1
-              - light.bed_light_strip_2
-              data:
-                kelvin: '{{ light_kelvin }}'
-                brightness_pct: 10
+            - choose:
+                - conditions:
+                    - condition: state
+                      entity_id: input_boolean.someone_sleeping
+                      state: "on"
+                  sequence:
+                    - choose:
+                        - conditions:
+                            - condition: state
+                              state: "on"
+                              entity_id: input_boolean.enable_color_mode
+                          sequence:
+                            - service: light.turn_on
+                              entity_id:
+                                - light.bed_light_strip_1
+                                - light.bed_light_strip_2
+                              data:
+                                color_name: "{{ light_color }}"
+                                brightness_pct: 10
+                      default:
+                        - service: light.turn_on
+                          entity_id:
+                            - light.bed_light_strip_1
+                            - light.bed_light_strip_2
+                          data:
+                            kelvin: "{{ light_kelvin }}"
+                            brightness_pct: 10
+                - conditions:
+                    - condition: and
+                      conditions:
+                        - condition: state
+                          state: "on"
+                          entity_id: input_boolean.enable_color_mode
+                        - condition: state
+                          entity_id: input_boolean.someone_sleeping
+                          state: "off"
+                  sequence:
+                    - service: light.turn_on
+                      entity_id:
+                        - light.floorlamp
+                        - light.bedroom_overhead_light
+                        - light.bed_light_strip_1
+                        - light.bed_light_strip_2
+                      data:
+                        color_name: "{{ light_color }}"
+                        brightness_pct: 10
+              default:
+                - service: light.turn_on
+                  entity_id:
+                    - light.floorlamp
+                    - light.bedroom_overhead_light
+                    - light.bed_light_strip_1
+                    - light.bed_light_strip_2
+                  data:
+                    brightness_pct: "{{ light_brightness }}"
+                    kelvin: "{{ light_kelvin }}"
         - conditions:
-          - condition: and
-            conditions:
-            - condition: state
-              state: 'on'
-              entity_id: input_boolean.enable_color_mode
-            - condition: state
-              entity_id: input_boolean.someone_sleeping
-              state: 'off'
+            - condition: trigger
+              id: media_room_motion
           sequence:
-          - service: light.turn_on
-            entity_id:
-            - light.floorlamp
-            - light.bedroom_overhead_light
-            - light.bed_light_strip_1
-            - light.bed_light_strip_2
-            data:
-              color_name: '{{ light_color }}'
-              brightness_pct: 10
-        default:
-        - service: light.turn_on
-          entity_id:
-          - light.floorlamp
-          - light.bedroom_overhead_light
-          - light.bed_light_strip_1
-          - light.bed_light_strip_2
-          data:
-            brightness_pct: '{{ light_brightness }}'
-            kelvin: '{{ light_kelvin }}'
-    - conditions:
-      - condition: trigger
-        id: media_room_motion
-      sequence:
-      - choose:
+            - choose:
+                - conditions:
+                    - condition: state
+                      state: "on"
+                      entity_id: input_boolean.enable_color_mode
+                  sequence:
+                    - service: light.turn_ON
+                      entity_id:
+                        - light.media_room_overhead_light
+                      data:
+                        brightness_pct: "{{ light_brightness }}"
+                        color_name: "{{ light_color }}"
+              default:
+                - service: light.turn_ON
+                  entity_id:
+                    - light.media_room_overhead_light
+                  data:
+                    brightness_pct: "{{ light_brightness }}"
+                    kelvin: "{{ light_kelvin }}"
         - conditions:
-          - condition: state
-            state: 'on'
-            entity_id: input_boolean.enable_color_mode
+            - condition: trigger
+              id: front_door_opened
           sequence:
-          - service: light.turn_ON
-            entity_id:
-            - light.media_room_overhead_light
-            data:
-              brightness_pct: '{{ light_brightness }}'
-              color_name: '{{ light_color }}'
-        default:
-        - service: light.turn_ON
-          entity_id:
-          - light.media_room_overhead_light
-          data:
-            brightness_pct: '{{ light_brightness }}'
-            kelvin: '{{ light_kelvin }}'
-    - conditions:
-      - condition: trigger
-        id: front_door_opened
-      sequence:
-      - choose:
+            - choose:
+                - conditions:
+                    - condition: state
+                      state: "on"
+                      entity_id: input_boolean.enable_color_mode
+                  sequence:
+                    - service: light.turn_on
+                      entity_id:
+                        - light.living_room_light
+                        - light.dining_room_light
+                      data:
+                        brightness_pct: "{{ light_brightness }}"
+                        color_name: "{{ light_color }}"
+              default:
+                - service: light.turn_on
+                  entity_id:
+                    - light.living_room_light
+                    - light.dining_room_light
+                  data:
+                    brightness_pct: "{{ light_brightness }}"
+                    kelvin: "{{ light_kelvin }}"
         - conditions:
-          - condition: state
-            state: 'on'
-            entity_id: input_boolean.enable_color_mode
+            - condition: trigger
+              id: back_door_opened
           sequence:
-          - service: light.turn_on
-            entity_id:
-            - light.living_room_light
-            - light.dining_room_light
-            data:
-              brightness_pct: '{{ light_brightness }}'
-              color_name: '{{ light_color }}'
-        default:
-        - service: light.turn_on
-          entity_id:
-          - light.living_room_light
-          - light.dining_room_light
-          data:
-            brightness_pct: '{{ light_brightness }}'
-            kelvin: '{{ light_kelvin }}'
-    - conditions:
-      - condition: trigger
-        id: back_door_opened
-      sequence:
-      - choose:
-        - conditions:
-          - condition: state
-            state: 'on'
-            entity_id: input_boolean.enable_color_mode
-          sequence:
-          - service: light.turn_ON
-            entity_id:
-            - light.kitchen_overhead_1
-            - light.kitchen_overhead_2
-            - light.laundry_room_overhead_1
-            - light.laundry_room_overhead_2
-            data:
-              brightness_pct: '{{ light_brightness }}'
-              color_name: '{{ light_color }}'
-        default:
-        - service: light.turn_ON
-          entity_id:
-          - light.kitchen_overhead_1
-          - light.kitchen_overhead_2
-          - light.laundry_room_overhead_1
-          - light.laundry_room_overhead_2
-          data:
-            brightness_pct: '{{ light_brightness }}'
-            kelvin: '{{ light_kelvin }}'
+            - choose:
+                - conditions:
+                    - condition: state
+                      state: "on"
+                      entity_id: input_boolean.enable_color_mode
+                  sequence:
+                    - service: light.turn_ON
+                      entity_id:
+                        - light.kitchen_overhead_1
+                        - light.kitchen_overhead_2
+                        - light.laundry_room_overhead_1
+                        - light.laundry_room_overhead_2
+                      data:
+                        brightness_pct: "{{ light_brightness }}"
+                        color_name: "{{ light_color }}"
+              default:
+                - service: light.turn_ON
+                  entity_id:
+                    - light.kitchen_overhead_1
+                    - light.kitchen_overhead_2
+                    - light.laundry_room_overhead_1
+                    - light.laundry_room_overhead_2
+                  data:
+                    brightness_pct: "{{ light_brightness }}"
+                    kelvin: "{{ light_kelvin }}"
   variables:
-    light_brightness: '{{ states(''input_number.home_light_brightness'') | int }}'
-    light_color: '{{ states(''input_select.light_color'') }}'
-    light_kelvin: '{{ states(''input_select.light_kelvin'') }}'
+    light_brightness: "{{ states('input_number.home_light_brightness') | int }}"
+    light_color: "{{ states('input_select.light_color') }}"
+    light_kelvin: "{{ states('input_select.light_kelvin') }}"
   mode: single
-- id: '1710979106892'
+- id: "1710979106892"
   alias: LG webOS Smart TV - Turn On Action
-  description: ''
+  description: ""
   use_blueprint:
     path: cvroque/webostv_turn_on.yaml
     input:
       webostv: 1503b5ade8481f97dd131da4a9772270
       webostv_mac: E4:75:DC:9F:D6:D3
       on_action:
-      - service: script.toggle
-        metadata: {}
-        data: {}
+        - service: script.toggle
+          metadata: {}
+          data: {}
       select_action: true
       custom_action:
-      - service: script.lg_tv_upstairs_power_on
-        metadata: {}
-        data: {}
-- id: '1711088810646'
+        - service: script.lg_tv_upstairs_power_on
+          metadata: {}
+          data: {}
+- id: "1711088810646"
   alias: Door Open TTS Alert Latest
-  description: Sends a TTS alert through selected speakers when the front or back
+  description:
+    Sends a TTS alert through selected speakers when the front or back
     door is opened, indicating which door was triggered.
   trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.back_door_contact
-    id: back_door
-    from:
-    to: 'on'
-  - platform: state
-    entity_id:
-    - binary_sensor.front_door_contact
-    id: front_door
-    from:
-    to: 'on'
+    - platform: state
+      entity_id:
+        - binary_sensor.back_door_contact
+      id: back_door
+      from:
+      to: "on"
+    - platform: state
+      entity_id:
+        - binary_sensor.front_door_contact
+      id: front_door
+      from:
+      to: "on"
   action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: back_door
-      sequence:
-      - service: script.turn_on
-        target:
-          entity_id: script.google_home_resume
-        data:
-          variables:
-            action:
-            - service: tts.cloud_say
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: back_door
+          sequence:
+            - service: script.turn_on
               target:
-                entity_id:
-                - media_player.kitchen_speaker
-                - media_player.bedroom_speaker
+                entity_id: script.google_home_resume
               data:
-                message: Back door opened.
-              extra:
-                volume: 0.8
-    - conditions:
-      - condition: trigger
-        id: front_door
-      sequence:
-      - service: script.turn_on
-        target:
-          entity_id: script.google_home_resume
-        data:
-          variables:
-            action:
-            - service: tts.cloud_say
+                variables:
+                  action:
+                    - service: tts.cloud_say
+                      target:
+                        entity_id:
+                          - media_player.kitchen_speaker
+                          - media_player.bedroom_speaker
+                      data:
+                        message: Back door opened.
+                      extra:
+                        volume: 0.8
+        - conditions:
+            - condition: trigger
+              id: front_door
+          sequence:
+            - service: script.turn_on
               target:
-                entity_id:
-                - media_player.kitchen_speaker
-                - media_player.bedroom_speaker
+                entity_id: script.google_home_resume
               data:
-                message: Front door opened.
-              extra:
-                volume: 0.8
-- id: '1711150276270'
+                variables:
+                  action:
+                    - service: tts.cloud_say
+                      target:
+                        entity_id:
+                          - media_player.kitchen_speaker
+                          - media_player.bedroom_speaker
+                      data:
+                        message: Front door opened.
+                      extra:
+                        volume: 0.8
+- id: "1711150276270"
   alias: Set Lights to Selected Temperature
-  description: ''
+  description: ""
   trigger:
-  - platform: state
-    entity_id:
-    - input_select.light_kelvin
+    - platform: state
+      entity_id:
+        - input_select.light_kelvin
   condition: []
   action:
-  - service: input_boolean.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - input_boolean.enable_color_mode
-      - input_boolean.theme_mode
-      - input_boolean.sync_music_lights
-  - service: input_boolean.turn_on
-    data: {}
-    target:
-      entity_id: input_boolean.normal_lights
-  - service: light.turn_on
-    target:
-      entity_id: light.all_lights
-    data:
-      kelvin: '{{ light_kelvin }}'
+    - service: input_boolean.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+          - input_boolean.enable_color_mode
+          - input_boolean.theme_mode
+          - input_boolean.sync_music_lights
+    - service: input_boolean.turn_on
+      data: {}
+      target:
+        entity_id: input_boolean.normal_lights
+    - service: light.turn_on
+      target:
+        entity_id: light.all_lights
+      data:
+        kelvin: "{{ light_kelvin }}"
   variables:
-    light_kelvin: '{{ states(''input_select.light_kelvin'') }}'
+    light_kelvin: "{{ states('input_select.light_kelvin') }}"
   mode: parallel
-- id: '1711155393194'
+- id: "1711155393194"
   alias: Setup Late Night Lights
-  description: ''
+  description: ""
   trigger:
-  - platform: state
-    entity_id:
-    - input_select.time_of_day
-    to: Late Night
-  condition: []
-  action:
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.bedroom_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.downstairs_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 10
-    target:
-      entity_id: input_number.kitchen_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.media_room_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.stairs_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 30
-    target:
-      entity_id: input_number.bedroom_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.downstairs_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.kitchen_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.stairs_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.media_room_motion_delay
-  mode: single
-- id: '1711155740786'
-  alias: 'Setup Morning Lights '
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - input_select.time_of_day
-    to: Morning
-  condition: []
-  action:
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 15
-    target:
-      entity_id: input_number.bedroom_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 30
-    target:
-      entity_id: input_number.downstairs_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 15
-    target:
-      entity_id: input_number.kitchen_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.stairs_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 10
-    target:
-      entity_id: input_number.media_room_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 30
-    target:
-      entity_id: input_number.bedroom_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.downstairs_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.kitchen_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.stairs_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.media_room_motion_delay
-  mode: single
-- id: '1711221871324'
-  alias: Setup Afternoon Lights
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - input_select.time_of_day
-    to: Afternoon
-  condition: []
-  action:
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 5
-    target:
-      entity_id: input_number.bedroom_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.bedroom_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.downstairs_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 15
-    target:
-      entity_id: input_number.downstairs_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.kitchen_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 15
-    target:
-      entity_id: input_number.kitchen_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 5
-    target:
-      entity_id: input_number.stairs_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.stairs_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 30
-    target:
-      entity_id: input_number.media_room_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.media_room_no_motion_delay
-  mode: single
-- id: '1711221914901'
-  alias: Setup Evening Lights
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - input_select.time_of_day
-    to: Evening
-  condition: []
-  action:
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 5
-    target:
-      entity_id: input_number.bedroom_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 10
-    target:
-      entity_id: input_number.kitchen_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.downstairs_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 2
-    target:
-      entity_id: input_number.stairs_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 10
-    target:
-      entity_id: input_number.media_room_no_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.bedroom_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.downstairs_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.kitchen_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.stairs_motion_delay
-  - service: input_number.set_value
-    metadata: {}
-    data:
-      value: 0
-    target:
-      entity_id: input_number.media_room_motion_delay
-  mode: single
-- id: '1711417104881'
-  alias: Normal Light On
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - input_boolean.normal_lights
-    to: 'on'
-    from: 'off'
-  condition: []
-  action:
-  - service: input_boolean.turn_off
-    metadata: {}
-    data: {}
-    target:
+    - platform: state
       entity_id:
-      - input_boolean.enable_color_mode
-      - input_boolean.sync_music_lights
-      - input_boolean.theme_mode
+        - input_select.time_of_day
+      to: Late Night
+  condition: []
+  action:
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.bedroom_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.downstairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 10
+      target:
+        entity_id: input_number.kitchen_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.media_room_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.stairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 30
+      target:
+        entity_id: input_number.bedroom_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.downstairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.kitchen_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.stairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.media_room_motion_delay
   mode: single
-- id: '1711479848694'
+- id: "1711155740786"
+  alias: "Setup Morning Lights "
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_select.time_of_day
+      to: Morning
+  condition: []
+  action:
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 15
+      target:
+        entity_id: input_number.bedroom_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 30
+      target:
+        entity_id: input_number.downstairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 15
+      target:
+        entity_id: input_number.kitchen_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.stairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 10
+      target:
+        entity_id: input_number.media_room_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 30
+      target:
+        entity_id: input_number.bedroom_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.downstairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.kitchen_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.stairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.media_room_motion_delay
+  mode: single
+- id: "1711221871324"
+  alias: Setup Afternoon Lights
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_select.time_of_day
+      to: Afternoon
+  condition: []
+  action:
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 5
+      target:
+        entity_id: input_number.bedroom_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.bedroom_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.downstairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 15
+      target:
+        entity_id: input_number.downstairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.kitchen_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 15
+      target:
+        entity_id: input_number.kitchen_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 5
+      target:
+        entity_id: input_number.stairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.stairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 30
+      target:
+        entity_id: input_number.media_room_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.media_room_no_motion_delay
+  mode: single
+- id: "1711221914901"
+  alias: Setup Evening Lights
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_select.time_of_day
+      to: Evening
+  condition: []
+  action:
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 5
+      target:
+        entity_id: input_number.bedroom_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 10
+      target:
+        entity_id: input_number.kitchen_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.downstairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 2
+      target:
+        entity_id: input_number.stairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 10
+      target:
+        entity_id: input_number.media_room_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.bedroom_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.downstairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.kitchen_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.stairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.media_room_motion_delay
+  mode: single
+- id: "1711417104881"
+  alias: Normal Light On
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.normal_lights
+      to: "on"
+      from: "off"
+  condition: []
+  action:
+    - service: input_boolean.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+          - input_boolean.enable_color_mode
+          - input_boolean.sync_music_lights
+          - input_boolean.theme_mode
+  mode: single
+- id: "1711479848694"
   alias: Weed Counter
   description: Long Press Third Button
   trigger:
-  - device_id: c0fe949098f7ff63239d22535cf3240a
-    domain: hue
-    platform: device
-    type: long_release
-    subtype: 3
-    unique_id: 5cdab592-0824-41d8-9e03-67feb4f4f79e
+    - device_id: c0fe949098f7ff63239d22535cf3240a
+      domain: hue
+      platform: device
+      type: long_release
+      subtype: 3
+      unique_id: 5cdab592-0824-41d8-9e03-67feb4f4f79e
   condition: []
   action:
-  - service: variable.update_sensor
-    data: 'value: "{{ (states(''sensor.weed'') | int(default=0)) + 1 }}"
+    - service: variable.update_sensor
+      data: 'value: "{{ (states(''sensor.weed'') | int(default=0)) + 1 }}"
 
-      '
+        '
   mode: single
-- id: '1711480069239'
+- id: "1711480069239"
   alias: Adderall Counter
   description: Long Press Second Button
   trigger:
-  - device_id: c0fe949098f7ff63239d22535cf3240a
-    domain: hue
-    platform: device
-    type: long_release
-    subtype: 2
-    unique_id: 12454de6-0358-47c9-b72e-fcdf6f9bedd1
+    - device_id: c0fe949098f7ff63239d22535cf3240a
+      domain: hue
+      platform: device
+      type: long_release
+      subtype: 2
+      unique_id: 12454de6-0358-47c9-b72e-fcdf6f9bedd1
   condition: []
   action:
-  - service: variable.update_sensor
-    data: 'value: "{{ (states(''sensor.adderall'') | int(default=0)) + 1 }}"
+    - service: variable.update_sensor
+      data: 'value: "{{ (states(''sensor.adderall'') | int(default=0)) + 1 }}"
 
-      '
+        '
   mode: single
-- id: '1721875125353'
+- id: "1721875125353"
   alias: Outdoor Night Light
-  description: ''
+  description: ""
   trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.back_door_contact
-    from: 'off'
-    to: 'on'
+    - platform: state
+      entity_id:
+        - binary_sensor.back_door_contact
+      from: "off"
+      to: "on"
   condition:
-  - condition: sun
-    after: sunset
+    - condition: sun
+      after: sunset
   action:
-  - service: switch.toggle
-    data: {}
-    target:
-      device_id: 985b699e0a29cb7a1bcc100865344644
-  - delay:
-      hours: 0
-      minutes: 15
-      seconds: 0
-      milliseconds: 0
-  - service: switch.toggle
-    metadata: {}
-    data: {}
-    target:
-      device_id: 985b699e0a29cb7a1bcc100865344644
+    - service: switch.toggle
+      data: {}
+      target:
+        device_id: 985b699e0a29cb7a1bcc100865344644
+    - delay:
+        hours: 0
+        minutes: 15
+        seconds: 0
+        milliseconds: 0
+    - service: switch.toggle
+      metadata: {}
+      data: {}
+      target:
+        device_id: 985b699e0a29cb7a1bcc100865344644
   mode: single
-- id: '1726026800205'
+- id: "1726026800205"
   alias: Watch Pirate Software Live on LGTV
   trigger:
-  - platform: state
-    entity_id:
-    - sensor.pirate_software
-    to: 'true'
+    - platform: state
+      entity_id:
+        - sensor.pirate_software
+      to: "true"
   action:
-  - action: media_player.turn_on
-    metadata: {}
-    data: {}
-    target:
-      device_id: 1503b5ade8481f97dd131da4a9772270
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - data:
-      entity_id: media_player.lg_webos_smart_tv
-      command: system.launcher/launch
-      payload:
-        id: youtube.leanback.v4
-        contentId: v={{ state_attr('sensor.pirate_software', 'content_id') }}
-    action: webostv.command
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - data:
-      entity_id: media_player.lg_webos_smart_tv
-      button: ENTER
-    action: webostv.button
+    - action: media_player.turn_on
+      metadata: {}
+      data: {}
+      target:
+        device_id: 1503b5ade8481f97dd131da4a9772270
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+    - data:
+        entity_id: media_player.lg_webos_smart_tv
+        command: system.launcher/launch
+        payload:
+          id: youtube.leanback.v4
+          contentId: v={{ state_attr('sensor.pirate_software', 'content_id') }}
+      action: webostv.command
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+    - data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: ENTER
+      action: webostv.button
   mode: single
-- id: '1726203993067'
+- id: "1726203993067"
   alias: Adjust No Motion Delay with Hue Dimmer
-  description: Set no motion delay to 30 when button 1 is pressed, reset on button
+  description:
+    Set no motion delay to 30 when button 1 is pressed, reset on button
     4 or after 30 minutes.
   trigger:
-  - device_id: 3f330cd2e69e8ee831d5c5f0ab4bc433
-    domain: hue
-    platform: device
-    type: short_release
-    subtype: 1
-    unique_id: b21ca135-d892-465c-91f0-934426a4a5c9
-  - device_id: 3f330cd2e69e8ee831d5c5f0ab4bc433
-    domain: hue
-    platform: device
-    type: short_release
-    subtype: 4
-    unique_id: some-unique-id-for-button-4
+    - device_id: 3f330cd2e69e8ee831d5c5f0ab4bc433
+      domain: hue
+      platform: device
+      type: short_release
+      subtype: 1
+      unique_id: b21ca135-d892-465c-91f0-934426a4a5c9
+    - device_id: 3f330cd2e69e8ee831d5c5f0ab4bc433
+      domain: hue
+      platform: device
+      type: short_release
+      subtype: 4
+      unique_id: some-unique-id-for-button-4
   action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: b21ca135-d892-465c-91f0-934426a4a5c9
-      sequence:
-      - data:
-          value: 30
-        target:
-          entity_id: input_number.bedroom_no_motion_delay
-        action: input_number.set_value
-      - wait_for_trigger:
-        - platform: event
-          event_type: deconz_event
-          event_data:
-            id: 3f330cd2e69e8ee831d5c5f0ab4bc433
-            event: 4002
-      - delay: 00:30:00
-      - data:
-          value: 0
-        target:
-          entity_id: input_number.bedroom_no_motion_delay
-        action: input_number.set_value
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: b21ca135-d892-465c-91f0-934426a4a5c9
+          sequence:
+            - data:
+                value: 30
+              target:
+                entity_id: input_number.bedroom_no_motion_delay
+              action: input_number.set_value
+            - wait_for_trigger:
+                - platform: event
+                  event_type: deconz_event
+                  event_data:
+                    id: 3f330cd2e69e8ee831d5c5f0ab4bc433
+                    event: 4002
+            - delay: 00:30:00
+            - data:
+                value: 0
+              target:
+                entity_id: input_number.bedroom_no_motion_delay
+              action: input_number.set_value
   mode: single
