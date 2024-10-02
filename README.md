@@ -4,21 +4,27 @@ This repository contains the configuration files for my Home Assistant setup. Th
 
 ## Table of Contents
 
-- [Project Overview](#project-overview)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Configuration](#configuration)
-- [Usage](#usage)
-  - [Scenes](#scenes)
-  - [Automations](#automations)
-- [Integrations](#integrations)
-- [Hardware](#hardware)
-- [Contributing](#contributing)
-  - [Pull Requests](#pull-requests)
-  - [Reporting Bugs](#reporting-bugs)
-  - [Feedback and Suggestions](#feedback-and-suggestions)
-- [License](#license)
+- [Home Assistant Configuration](#home-assistant-configuration)
+  - [Table of Contents](#table-of-contents)
+  - [Project Overview](#project-overview)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Configuration](#configuration)
+      - [Sample Configuration Snippet](#sample-configuration-snippet)
+    - [Scenes](#scenes)
+    - [Automations](#automations)
+  - [Integrations](#integrations)
+  - [HACS Intergration](#hacs-intergration)
+    - [Dashboard Integrations](#dashboard-integrations)
+    - [Integration Components](#integration-components)
+    - [Themes](#themes)
+  - [Hardware](#hardware)
+  - [Contributing](#contributing)
+    - [Pull Requests](#pull-requests)
+    - [Reporting Bugs](#reporting-bugs)
+    - [Feedback and Suggestions](#feedback-and-suggestions)
+  - [License](#license)
 
 ## Project Overview
 
@@ -179,6 +185,67 @@ This configuration includes the following integrations:
 - YouTube Sensor: Tracks live YouTube events.
 - YouTube Media Player: YouTube media player control.
 - Zodiac: Provides zodiac sign data.
+
+## HACS Intergration
+
+### Dashboard Integrations
+
+- Search Card: Quickly search for entities from a Lovelace card.
+- Scheduler Card: HA Lovelace card for control of scheduler entities.
+- RPi Monitor Card: A Raspberry Pi status display card for Home Assistant Lovelace.
+- Room Card: Show multiple entity states, attributes, and icons in a single card in Home Assistant's Lovelace UI.
+- Plex Meets Home Assistant: Custom card which integrates Plex into Home Assistant and makes it possible to launch movies or TV shows on TV with a simple click.
+- Mushroom: Build a beautiful Home Assistant dashboard easily.
+- mini-graph-card: Minimalistic graph card for Home Assistant Lovelace UI.
+- Mini Media Player: Minimalistic media card for Home Assistant Lovelace UI.
+- Meteoalarm Card: Severe weather warnings card for Home Assistant Lovelace UI.
+- Frigate Card: A Lovelace card for Frigate in Home Assistant.
+- fold-entity-row: A foldable row for entities card, containing other rows.
+- flex-table-card: Highly customizable card for data visualization in Home Assistant.
+- Gallery Card: Displays images and/or videos from a folder in the style of a gallery.
+- Nintendo Wishlist Card: Displays a card showing Nintendo Switch games that are on sale from your wish list.
+- Number Box: Replace input_number sliders with plus and minus buttons.
+- Compass Card: A Lovelace card that shows a directional indicator on a compass for Home Assistant.
+- Bubble Card: Minimalist card collection for Home Assistant with a nice pop-up touch.
+- Custom Animated Weather Card: Custom animated weather card for any weather provider.
+- Minimalistic Area Card: A minimalistic area card with sensors and buttons.
+- more-info-card: Display the more-info dialog of any entity as a Lovelace card.
+- Hue-Like Light Card: Provides a Hue-like way to control your lights in Home Assistant.
+- Horizon Card: Visualize the position of the Sun over the horizon.
+- Home Assistant Registry: Adds services for home assistant registry operations.
+- Frigate: Frigate integration for Home Assistant.
+
+### Integration Components
+
+- Rocket Launch Live - Next 5 Launches: Integrates the next 5 global rocket launches from rocketlaunch.live into Home Assistant.
+- Remote Home-Assistant: Links multiple Home Assistant instances together.
+- QR-Code Generator: Custom Home Assistant integration to create a camera that displays a custom QR code.
+- Plex recently added sensor: Plex component to feed the Upcoming Media Card.
+- Passive BLE monitor: BLE monitor for passive BLE sensors.
+- NWS Alerts: Updated version of the NWS Alerts custom integration for Home Assistant.
+- NPM Switches: Provides switches to enable or disable Nginx Proxy Manager proxies.
+- Notion ToDo: ToDo Integration for Notion and Home Assistant.
+- Feedparser: RSS Feed Integration for Home Assistant.
+- browser_mod: Turns your browser into a controllable entity and media player.
+- Bodymiscale: Custom integration for body metrics for Xiaomi MiScale 1 and 2.
+- Google Home: Google Home custom component for Home Assistant.
+- Google Fit: Google Fit custom component for Home Assistant.
+- Google Assistant SDK Custom: Fork of Google Assistant SDK integration to allow getting responses from commands.
+- Anniversaries: Anniversary countdown sensor for Home Assistant.
+- Audiobookshelf: Adds sensors for an Audiobookshelf server to Home Assistant to show connection and active sessions.
+- Daily Schedule: Daily schedule custom component for Home Assistant.
+- HACS: Powerful UI to handle downloads of custom needs in Home Assistant.
+- Harmony Hub Climate Controller: Use a Harmony Hub to control an IR-controlled climate device.
+- Average Sensor: Average Sensor for Home Assistant.
+
+### Themes
+
+- Material 3 Dark & Light Theme C11: Purple: Material Design 3 / Material YOU theme for Home Assistant.
+- HA LCARS: LCARS theme for Home Assistant.
+- Cyberpunk 2077 Theme: Cyberpunk 2077 GUI-inspired Home Assistant theme.
+- Catppuccin Theme: Soothing pastel theme for Home Assistant.
+- Caule Themes Pack 1: Modern themes with animated icons for the weather forecast card.
+- custom-icons: Several custom-made and legacy icons in one set, UI selectable.
 
 ## Hardware
 
