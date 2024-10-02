@@ -214,6 +214,16 @@ This automation adjusts the no-motion and motion delay timers for various rooms 
   - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
 - **Conditions**: None.
 
+**Setup Afternoon Lights**
+
+**Description**:  
+This automation adjusts the no-motion and motion delay timers for various rooms when the time of day is set to "Afternoon".
+
+- **Triggers**: The `input_select.time_of_day` changes to "Afternoon".
+- **Actions**: 
+  - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
+- **Conditions**: None.
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:

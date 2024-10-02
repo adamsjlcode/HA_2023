@@ -86,3 +86,92 @@
       target:
         entity_id: input_number.media_room_motion_delay
   mode: single
+
+# -----------------------------------------------------
+# Setup Afternoon Lights
+#
+# Description:
+# This automation adjusts the no-motion and motion delay timers for various 
+# rooms when the time of day is set to "Afternoon".
+#
+# Triggers:
+# - The input_select.time_of_day changes to "Afternoon".
+#
+# Actions:
+# - Sets the no-motion and motion delay times for the bedroom, kitchen, 
+#   downstairs, stairs, and media room to different values.
+#
+# Conditions:
+# - None.
+# -----------------------------------------------------
+- id: "1711221871324"
+  alias: Setup Afternoon Lights
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_select.time_of_day
+      to: Afternoon
+  condition: []
+  action:
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 5
+      target:
+        entity_id: input_number.bedroom_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.bedroom_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.downstairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 15
+      target:
+        entity_id: input_number.downstairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.kitchen_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 15
+      target:
+        entity_id: input_number.kitchen_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 5
+      target:
+        entity_id: input_number.stairs_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.stairs_no_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 30
+      target:
+        entity_id: input_number.media_room_motion_delay
+    - service: input_number.set_value
+      metadata: {}
+      data:
+        value: 0
+      target:
+        entity_id: input_number.media_room_no_motion_delay
+  mode: single
