@@ -296,6 +296,29 @@ This automation turns off normal lights, color mode, and sync music lights when 
   - Turns off normal lights, color mode, and sync music lights.
 - **Conditions**: None.
 
+**Play Clock Sound on the Half-Hour**
+
+**Description**:  
+This automation plays a clock sound every half-hour when the sun is up.
+
+- **Triggers**: The time pattern reaches the 30-minute mark on any hour.
+- **Actions**: 
+  - Plays a clock sound on the home media player.
+- **Conditions**: Only runs when the sun is above the horizon.
+
+---
+
+**Play Clock Sound on the Hour**
+
+**Description**:  
+This automation plays a clock sound every hour when the sun is up and frog sounds are not playing.
+
+- **Triggers**: The time pattern reaches the top of the hour (00 minutes).
+- **Actions**: 
+  - Plays a clock sound on the home media player.
+- **Conditions**: Only runs when the sun is above the horizon and frog sounds are not enabled.
+
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:
