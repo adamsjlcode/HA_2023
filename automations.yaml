@@ -1,15 +1,4 @@
-- id: "1699732340926"
-  alias: Frigidare Power Toggle
-  description: ""
-  trigger:
-    - platform: state
-      entity_id:
-        - input_boolean.frigidaire_ac_button
-  condition: []
-  action:
-    - service: script.frigidaire_climate_control_upstairs_power_toggle
-      data: {}
-  mode: single
+
 - id: "1699732652226"
   alias: LG AC Power Toggle
   description: ""
@@ -557,64 +546,6 @@
         - service: script.lg_tv_upstairs_power_on
           metadata: {}
           data: {}
-- id: "1711088810646"
-  alias: Door Open TTS Alert Latest
-  description:
-    Sends a TTS alert through selected speakers when the front or back
-    door is opened, indicating which door was triggered.
-  trigger:
-    - platform: state
-      entity_id:
-        - binary_sensor.back_door_contact
-      id: back_door
-      from:
-      to: "on"
-    - platform: state
-      entity_id:
-        - binary_sensor.front_door_contact
-      id: front_door
-      from:
-      to: "on"
-  action:
-    - choose:
-        - conditions:
-            - condition: trigger
-              id: back_door
-          sequence:
-            - service: script.turn_on
-              target:
-                entity_id: script.google_home_resume
-              data:
-                variables:
-                  action:
-                    - service: tts.cloud_say
-                      target:
-                        entity_id:
-                          - media_player.kitchen_speaker
-                          - media_player.bedroom_speaker
-                      data:
-                        message: Back door opened.
-                      extra:
-                        volume: 0.8
-        - conditions:
-            - condition: trigger
-              id: front_door
-          sequence:
-            - service: script.turn_on
-              target:
-                entity_id: script.google_home_resume
-              data:
-                variables:
-                  action:
-                    - service: tts.cloud_say
-                      target:
-                        entity_id:
-                          - media_player.kitchen_speaker
-                          - media_player.bedroom_speaker
-                      data:
-                        message: Front door opened.
-                      extra:
-                        volume: 0.8
 
 - id: "1711155393194"
   alias: Setup Late Night Lights

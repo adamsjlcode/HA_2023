@@ -164,6 +164,16 @@ This automation sets all lights to the color temperature selected in the `input_
   - Sets all lights to the selected color temperature.
 - **Conditions**: None.
 
+**Frigidaire Power Toggle**
+
+**Description**:  
+This automation triggers the power toggle script for the Frigidaire AC unit when the `input_boolean.frigidaire_ac_button` is toggled.
+
+- **Triggers**: A change in the `input_boolean.frigidaire_ac_button` state.
+- **Actions**: 
+  - Runs the Frigidaire climate control power toggle script.
+- **Conditions**: None.
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:
