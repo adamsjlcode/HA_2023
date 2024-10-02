@@ -141,7 +141,16 @@ This automation turns off the color mode, sync music lights, and theme mode when
 - **Actions**:
   - Turns off color mode, sync music lights, and theme mode input booleans.
 - **Conditions**: None.
--
+
+**Theme is off**
+
+**Description**:  
+This automation turns on the normal lights input boolean when the theme mode is turned off.
+
+- **Triggers**: The `input_boolean.theme_mode` changes from "on" to "off".
+- **Actions**: 
+  - Turns on the normal lights input boolean.
+- **Conditions**: None.
 
 ## How to Contribute
 

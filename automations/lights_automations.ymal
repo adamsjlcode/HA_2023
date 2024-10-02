@@ -305,3 +305,36 @@
           - input_boolean.sync_music_lights
           - input_boolean.theme_mode
   mode: single
+  
+# -----------------------------------------------------
+# Theme is off
+#
+# Description:
+# This automation turns on the normal lights input boolean when the theme mode 
+# is turned off.
+#
+# Triggers:
+# - The input_boolean.theme_mode changes from "on" to "off".
+#
+# Actions:
+# - Turns on the normal lights input boolean.
+#
+# Conditions:
+# - None.
+# -----------------------------------------------------
+- id: "1710456822979"
+  alias: Theme is off
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.theme_mode
+      from: "on"
+      to: "off"
+  condition: []
+  action:
+    - service: input_boolean.turn_on
+      data: {}
+      target:
+        entity_id: input_boolean.normal_lights
+  mode: single
