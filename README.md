@@ -1,6 +1,3 @@
-Here is the updated README content that you can copy and upload without removing anything from your original file:
-
-````markdown
 # Home Assistant Configuration
 
 This repository contains the configuration files for my Home Assistant setup. The configuration includes various scenes and their corresponding entity pictures.
