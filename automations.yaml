@@ -39,49 +39,7 @@
         media_content_id: media-source://media_source/local/antique-wood-chime-bell-ring.wav
         media_content_type: music
   mode: single
-- id: "1710103968772"
-  alias: Sync Sengled with Hue - Dynamic Palette
-  description: Mimic Hue dynamic scene on Sengled lights
-  trigger:
-    - platform: template
-      value_template: "{{ state_attr('light.home', 'dynamics') }}"
-      enabled: true
-  action:
-    - service: light.turn_on
-      data:
-        entity_id:
-          - light.bed_light_strip_1
-          - light.laundry_room_overhead_1
-        brightness: "{{ state_attr('light.media_room_overhead_light', 'brightness')}}"
-        rgb_color:
-          "{{ state_attr('light.media_room_overhead_light', 'rgb_color')
-          }}"
-    - service: light.turn_on
-      data:
-        entity_id:
-          - light.stairs_light_strip
-          - light.kitchen_overhead_1
-          - light.living_room_light
-        brightness: "{{ state_attr('light.stairs_overhead_light', 'brightness')
-          }}"
-        rgb_color: "{{ state_attr('light.stairs_overhead_light', 'rgb_color') }}"
-    - service: light.turn_on
-      data:
-        entity_id:
-          - light.kitchen_overhead_2
-          - light.laundry_room_overhead_2
-        brightness: "{{ state_attr('light.bedroom_overhead_light', 'brightness')
-          }}"
-        rgb_color: "{{ state_attr('light.bedroom_overhead_light', 'rgb_color') }}"
-    - service: light.turn_on
-      data:
-        entity_id:
-          - light.dining_room_light
-          - light.bed_light_strip_2
-        brightness: "{{ state_attr('light.floorlamp', 'brightness') }}"
-        rgb_color: "{{ state_attr('light.floorlamp', 'rgb_color') }}"
-  mode: single
-  max: 10
+
 - id: "1710456631644"
   alias: Persistent Theme Lights
   description: ""
