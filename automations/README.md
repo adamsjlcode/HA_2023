@@ -1,4 +1,3 @@
-
 # Home Assistant Automations
 
 This folder contains various automations used in my Home Assistant setup. Each automation is designed to streamline and automate different aspects of the home environment, from lighting to media control.
@@ -8,19 +7,17 @@ This folder contains various automations used in my Home Assistant setup. Each a
 - [Home Assistant Automations](#home-assistant-automations)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-  - [Automation List](#automation-list)
-    - [1. Adjust Brightness of On Lights Except Screens](#1-adjust-brightness-of-on-lights-except-screens)
-    - [2. Turn Off Lights on No Motion](#2-turn-off-lights-on-no-motion)
+    - [Automation List](#automation-list)
   - [How to Contribute](#how-to-contribute)
   - [License](#license)
 
 ## Introduction
 
-The automations in this repository are organized based on their purpose, such as lighting, media control, and security. This README file documents each automation's purpose, triggers, actions, and conditions to help understand how they function.
+---
 
-## Automation List
+### Automation List
 
-### 1. Adjust Brightness of On Lights Except Screens
+**Adjust Brightness of On Lights Except Screens**
 
 **Description**:  
 This automation adjusts the brightness of all lights that are currently on, except for screen-related lights, whenever the input_number for brightness changes.
@@ -28,17 +25,86 @@ This automation adjusts the brightness of all lights that are currently on, exce
 - **Triggers**: Changes in `input_number.home_light_brightness`.
 - **Actions**: Adjust brightness of all on lights (except those related to screens) to match the input_number value.
 - **Conditions**: None.
-- **Dependencies**: Lights that are turned on and exclude "_screen" in their entity ID.
+- **Dependencies**: Lights that are turned on and exclude "\_screen" in their entity ID.
 
-### 2. Turn Off Lights on No Motion
+---
+
+**Turn Off Lights on No Motion**
 
 **Description**:  
-This automation turns off lights in various areas of the home when no motion is detected for a specified amount of time, with room-specific delays. The delays are controlled by `input_number` entities.
+This automation turns off lights in various areas of the home when no motion is detected for a specified amount of time, with room-specific delays. The delays are controlled by input_number entities.
 
 - **Triggers**: No motion detected in rooms like the bedroom, kitchen, stairs, and media room, or when front or back doors are closed for a certain period of time.
 - **Actions**: Turn off the lights in the corresponding room when no motion is detected.
 - **Conditions**: Runs only if `input_boolean.sync_music_lights` and `input_boolean.theme_mode` are both off.
 - **Dependencies**: Lights in the respective rooms, controlled by motion or contact sensors.
+
+---
+
+**Switch: Bedroom All Lights Off (Long Press)**
+
+**Description**:  
+This automation turns off all bedroom lights when the user long presses the off button on the bedroom Hue dimmer switch.
+
+- **Triggers**: Long press on the off button for the specified bedroom Hue dimmer switch.
+- **Actions**: Turns off all bedroom lights with a smooth 5-second transition.
+- **Conditions**: None.
+
+---
+
+**Switch: Bedroom All Lights On (Long Press)**
+
+**Description**:  
+This automation turns on all bedroom lights to full brightness and a warm color temperature when the user long presses the on button on the bedroom Hue dimmer switch.
+
+- **Triggers**: Long press on the on button for the specified bedroom Hue dimmer switch.
+- **Actions**: Turns on all bedroom lights with a 60-second transition, setting brightness to 100% and color temperature to 228.
+- **Conditions**: None.
+
+---
+
+**Switch: Bedroom Lights On (Short Press)**
+
+**Description**:  
+This automation turns on the bedroom lights when the user short presses the on button on the bedroom Hue dimmer switch.
+
+- **Triggers**: Short press on the on button for the specified bedroom Hue dimmer switch.
+- **Actions**: Turns on specified bedroom lights with a 5-second transition, setting brightness to 100% and color temperature to 234.
+- **Conditions**: None.
+
+---
+
+**Switch: Bedroom Lights Off (Short Press)**
+
+**Description**:  
+This automation turns off the bedroom lights when the user short presses the off button on the bedroom Hue dimmer switch.
+
+- **Triggers**: Short press on the off button for the specified bedroom Hue dimmer switch.
+- **Actions**: Turns off specified bedroom lights with a smooth 5-second transition.
+- **Conditions**: None.
+
+---
+
+**Switch: Downstairs Lights On (Short Press)**
+
+**Description**:  
+This automation turns on specified lights downstairs to full brightness with a cool color temperature when the user short presses the on button on the downstairs Hue dimmer switch.
+
+- **Triggers**: Short press on the on button for the specified downstairs Hue dimmer switch.
+- **Actions**: Turn on specified downstairs lights with a 15-second transition, setting brightness to 100% and color temperature to 412.
+- **Conditions**: None.
+
+---
+
+**Switch: Downstairs Lights Off (Short Press)**
+
+**Description**:  
+This automation turns off the specified downstairs lights when the user short presses the off button on the downstairs Hue dimmer switch.
+
+- **Triggers**: Short press on the off button for the specified downstairs Hue dimmer switch.
+- **Actions**: Turns off specified downstairs lights with a smooth 5-second transition.
+- **Conditions**: None.
+  !
 
 ## How to Contribute
 
