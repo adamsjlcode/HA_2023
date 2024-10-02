@@ -351,3 +351,87 @@
       target:
         entity_id: input_number.media_room_motion_delay
   mode: single
+  
+# -----------------------------------------------------
+# Update Time of Day
+#
+# Description:
+# This automation automatically updates the 'time_of_day' input select based on 
+# the current time and predefined start times for morning, afternoon, evening, 
+# and late night.
+#
+# Triggers:
+# - Time triggers based on the start times for each time of day or at midnight.
+#
+# Actions:
+# - Updates the 'time_of_day' input select based on the current time and the 
+#   specified start times.
+#
+# Conditions:
+# - None.
+# -----------------------------------------------------
+
+- id: "1710642496243"
+  alias: Update Time of Day
+  description:
+    Automatically updates the 'time_of_day' input select based on the current
+    time and predefined start times.
+  trigger:
+    - platform: time
+      at: 00:00:01
+    - platform: time
+      at: input_datetime.morning_start
+    - platform: time
+      at: input_datetime.afternoon_start
+    - platform: time
+      at: input_datetime.evening_start
+    - platform: time
+      at: input_datetime.late_night_start
+  condition: []
+  action:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template:
+                "{{ now().time() >= strptime(states('input_datetime.morning_start'),
+                '%H:%M:%S').time() and now().time() < strptime(states('input_datetime.afternoon_start'),
+                '%H:%M:%S').time() }}"
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.time_of_day
+                option: Morning
+        - conditions:
+            - condition: template
+              value_template:
+                "{{ now().time() >= strptime(states('input_datetime.afternoon_start'),
+                '%H:%M:%S').time() and now().time() < strptime(states('input_datetime.evening_start'),
+                '%H:%M:%S').time() }}"
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.time_of_day
+                option: Afternoon
+        - conditions:
+            - condition: template
+              value_template:
+                "{{ now().time() >= strptime(states('input_datetime.evening_start'),
+                '%H:%M:%S').time() and now().time() < strptime(states('input_datetime.late_night_start'),
+                '%H:%M:%S').time() }}"
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.time_of_day
+                option: Evening
+        - conditions:
+            - condition: template
+              value_template:
+                "{{ now().time() >= strptime(states('input_datetime.late_night_start'),
+                '%H:%M:%S').time() or now().time() < strptime(states('input_datetime.morning_start'),
+                '%H:%M:%S').time() }}"
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.time_of_day
+                option: Late Night
+  mode: single

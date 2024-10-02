@@ -264,6 +264,16 @@ This automation adjusts the no-motion and motion delay timers for various rooms 
   - Sets the no-motion and motion delay times for the bedroom, kitchen, downstairs, stairs, and media room to different values.
 - **Conditions**: None.
 
+**Update Time of Day**
+
+**Description**:  
+This automation automatically updates the `time_of_day` input select based on the current time and predefined start times for morning, afternoon, evening, and late night.
+
+- **Triggers**: Time triggers based on the start times for each time of day or at midnight.
+- **Actions**: 
+  - Updates the `time_of_day` input select based on the current time and the specified start times.
+- **Conditions**: None.
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:
