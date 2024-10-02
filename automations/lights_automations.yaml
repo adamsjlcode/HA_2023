@@ -727,3 +727,74 @@
         rgb_color: "{{ state_attr('light.floorlamp', 'rgb_color') }}"
   mode: single
   max: 10
+# -----------------------------------------------------
+# Persistent Theme Lights
+#
+# Description:
+# This automation turns on theme mode when dynamic scenes from the Hue group 
+# are enabled.
+#
+# Triggers:
+# - The binary_sensor.hue_groups_dynamic_scening changes from "off" to "on".
+#
+# Actions:
+# - Turns on theme mode by setting input_boolean.theme_mode to "on".
+#
+# Conditions:
+# - None.
+# -----------------------------------------------------
+
+- id: "1710456631644"
+  alias: Persistent Theme Lights
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.hue_groups_dynamic_scening
+      from: "off"
+      to: "on"
+  condition: []
+  action:
+    - service: input_boolean.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: input_boolean.theme_mode
+  mode: single
+
+# Theme Is Running
+#
+# Description:
+# This automation turns off normal lights, color mode, and sync music lights 
+# when theme mode is activated.
+#
+# Triggers:
+# - The input_boolean.theme_mode changes to "on".
+#
+# Actions:
+# - Turns off normal lights, color mode, and sync music lights.
+#
+# Conditions:
+# - None.
+# -----------------------------------------------------
+
+- id: "1710456739075"
+  alias: Theme Is Running
+  description: ""
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.theme_mode
+      from:
+      to: "on"
+  condition: []
+  action:
+    - service: input_boolean.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+          - input_boolean.normal_lights
+          - input_boolean.enable_color_mode
+          - input_boolean.sync_music_lights
+  mode: single

@@ -274,6 +274,28 @@ This automation automatically updates the `time_of_day` input select based on th
   - Updates the `time_of_day` input select based on the current time and the specified start times.
 - **Conditions**: None.
 
+**Persistent Theme Lights**
+
+**Description**:  
+This automation turns on theme mode when dynamic scenes from the Hue group are enabled.
+
+- **Triggers**: The `binary_sensor.hue_groups_dynamic_scening` changes from "off" to "on".
+- **Actions**: 
+  - Turns on theme mode by setting `input_boolean.theme_mode` to "on".
+- **Conditions**: None.
+
+---
+
+**Theme Is Running**
+
+**Description**:  
+This automation turns off normal lights, color mode, and sync music lights when theme mode is activated.
+
+- **Triggers**: The `input_boolean.theme_mode` changes to "on".
+- **Actions**: 
+  - Turns off normal lights, color mode, and sync music lights.
+- **Conditions**: None.
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:
