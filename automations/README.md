@@ -152,6 +152,16 @@ This automation turns on the normal lights input boolean when the theme mode is 
   - Turns on the normal lights input boolean.
 - **Conditions**: None.
 
+**Sync Sengled with Hue - Dynamic Palette**
+
+**Description**:  
+This automation mimics the Hue dynamic scenes on Sengled lights by matching the brightness and RGB color attributes of various Hue lights with the Sengled lights.
+
+- **Triggers**: A change in the dynamics attribute of the Hue lights.
+- **Actions**: 
+  - Synchronizes the brightness and RGB color of the Sengled lights with the corresponding Hue lights.
+- **Conditions**: None.
+
 ## How to Contribute
 
 Contributions are welcome! To add new automations or improve existing ones, please follow these steps:

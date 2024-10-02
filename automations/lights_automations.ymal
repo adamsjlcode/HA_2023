@@ -344,3 +344,65 @@
       target:
         entity_id: input_boolean.normal_lights
   mode: single
+
+# -----------------------------------------------------
+# Sync Sengled with Hue - Dynamic Palette
+#
+# Description:
+# This automation mimics the Hue dynamic scenes on Sengled lights by matching 
+# brightness and RGB color attributes of various Hue lights with the Sengled lights.
+#
+# Triggers:
+# - A change in the dynamics attribute of the Hue lights.
+#
+# Actions:
+# - Synchronizes the brightness and RGB color of the Sengled lights with 
+#   corresponding Hue lights.
+#
+# Conditions:
+# - None.
+# -----------------------------------------------------
+
+- id: "1710103968772"
+  alias: Sync Sengled with Hue - Dynamic Palette
+  description: Mimic Hue dynamic scene on Sengled lights
+  trigger:
+    - platform: template
+      value_template: "{{ state_attr('light.home', 'dynamics') }}"
+      enabled: true
+  action:
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.bed_light_strip_1
+          - light.laundry_room_overhead_1
+        brightness: "{{ state_attr('light.media_room_overhead_light', 'brightness')}}"
+        rgb_color:
+          "{{ state_attr('light.media_room_overhead_light', 'rgb_color')
+          }}"
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.stairs_light_strip
+          - light.kitchen_overhead_1
+          - light.living_room_light
+        brightness: "{{ state_attr('light.stairs_overhead_light', 'brightness')
+          }}"
+        rgb_color: "{{ state_attr('light.stairs_overhead_light', 'rgb_color') }}"
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.kitchen_overhead_2
+          - light.laundry_room_overhead_2
+        brightness: "{{ state_attr('light.bedroom_overhead_light', 'brightness')
+          }}"
+        rgb_color: "{{ state_attr('light.bedroom_overhead_light', 'rgb_color') }}"
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.dining_room_light
+          - light.bed_light_strip_2
+        brightness: "{{ state_attr('light.floorlamp', 'brightness') }}"
+        rgb_color: "{{ state_attr('light.floorlamp', 'rgb_color') }}"
+  mode: single
+  max: 10
