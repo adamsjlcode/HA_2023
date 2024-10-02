@@ -28,7 +28,7 @@ Before you begin, ensure you have met the following requirements:
 ### Installation
 1. **Clone the repository**:
 ```bash
-git clone [https://github.com/adamsjlcode/HA_2023.git]
+git clone [https://github.com/adamsjlcode/HassioConfig2023.git]
 cd home-assistant-config/
 ```
 
