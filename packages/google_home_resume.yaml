@@ -16,7 +16,7 @@ homeassistant:
         primary_spotcast: "justin"
         radio_data:
           NPO Radio 2:
-            picture: "http://69.69.69.69:8123/local/titties-and-beer.jpg"
+            picture: !secret radio_picture_url
             title: "Er is maar één NPO Radio 2"
         speaker_groups:
           media_player.home_google:

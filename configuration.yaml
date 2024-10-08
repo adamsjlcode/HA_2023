@@ -6,6 +6,14 @@ default_config:
 # Load frontend themes from the themes folder
 frontend:
   themes: !include_dir_merge_named themes
+# Example configuration.yaml entry
+geo_location:
+  - platform: usgs_earthquakes_feed
+    feed_type: "past_month_all_earthquakes"
+    radius: 100
+    minimum_magnitude: 0.0
+    latitude: !secret lat
+    longitude: !secret long
 homeassistant:
   # packages:
   packages: !include_dir_named packages
