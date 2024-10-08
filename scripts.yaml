@@ -19,7 +19,7 @@ open_weather_channel_command:
       data:
         command: system.launcher/open
         payload:
-          target: http://69.69.69.69:5080
+          target: !secret adp_url
 lg_climate_control_upstairs_power_toggle:
   alias: LG Climate Control Power Toggle - Upstairs
   sequence:
